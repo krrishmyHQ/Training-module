@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myHQ — Starter Kit · Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:       #1E22AA;
+  --blue-mid:   #2D33CC;
+  --blue-light: #676BE4;
+  --mint:       #ADDFB3;
+  --mint-dim:   rgba(173,223,179,0.18);
+  --mint-line:  rgba(173,223,179,0.35);
+  --dark:       #080B1A;
+  --dark-2:     #0D1020;
+  --dark-3:     #111428;
+  --surface:    rgba(255,255,255,0.04);
+  --border:     1px solid rgba(255,255,255,0.08);
+  --border-blue:1px solid rgba(30,34,170,0.6);
+  --white:      #FFFFFF;
+  --text-dim:   rgba(255,255,255,0.45);
+  --text-muted: rgba(255,255,255,0.22);
+  --font:       'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --leading-prose: 1.72;
+  --sh-blue:    5px 5px 0 var(--blue);
+  --sh-mint:    5px 5px 0 var(--mint);
+  --transition: 0.18s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--dark);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────
+   BACKGROUND — subtle grid + blue glow
+───────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(30,34,170,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,34,170,0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: -30%;
+  left: -10%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(ellipse at 30% 40%, rgba(30,34,170,0.18) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─────────────────────────────────────────
+   TOPBAR
+───────────────────────────────────────── */
+.topbar {
+  padding: 0 52px;
+  height: 62px;
+  border-bottom: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  background: rgba(8,11,26,0.9);
+  backdrop-filter: blur(12px);
+}
+.topbar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 50%, var(--mint) 100%);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* myHQ flag mark — SVG-like pure CSS */
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.brand-mark::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  background: var(--white);
+  top: 8px;
+  left: 9px;
+  clip-path: polygon(0 0, 100% 25%, 100% 100%, 0 75%);
+}
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 16px;
+  background: rgba(255,255,255,0.5);
+  bottom: 6px;
+  left: 9px;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+.brand-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255,255,255,0.12);
+}
+.brand-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.topbar-tag {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 6px 14px;
+  background: var(--surface);
+}
+
+/* ─────────────────────────────────────────
+   MAIN GRID
+───────────────────────────────────────── */
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  min-height: calc(100vh - 62px - 52px);
+  position: relative;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────
+   LEFT — COPY
+───────────────────────────────────────── */
+.left {
+  padding: 72px 64px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.left-inner { position: relative; z-index: 1; }
+
+/* eyebrow pill */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px;
+  border: 1px solid var(--mint-line);
+  background: var(--mint-dim);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--mint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 52px;
+  width: fit-content;
+}
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--mint);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.6)} }
+
+/* headline */
+.headline {
+  font-size: clamp(2.5rem, 4.5vw + 1rem, 4.125rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--white);
+  margin-bottom: 44px;
+}
+.headline-blue {
+  color: var(--blue-light);
+  display: block;
+}
+.headline-mint {
+  color: var(--mint);
+  display: block;
+}
+
+/* ruled copy block */
+.copy-block {
+  margin-bottom: 60px;
+  padding-left: 24px;
+  border-left: 2px solid var(--blue);
+}
+.copy-line {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  line-height: var(--leading-prose);
+}
+.copy-line strong {
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────
+   MODULE CARDS — bottom of left
+───────────────────────────────────────── */
+.module-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: var(--border);
+  border-color: rgba(255,255,255,0.1);
+  overflow: hidden;
+  background: var(--surface);
+}
+.module-card {
+  padding: 22px 18px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  transition: background var(--transition);
+}
+.module-card:last-child { border-right: none; }
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+.module-card:hover::before { transform: scaleX(1); }
+.module-card:hover { background: rgba(30,34,170,0.08); }
+
+.mc-num {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.mc-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.mc-sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* stat row */
+.stat-row {
+  display: flex;
+  gap: 0;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.stat-item {
+  flex: 1;
+  padding-right: 28px;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.stat-value span {
+  color: var(--mint);
+}
+.stat-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ─────────────────────────────────────────
+   RIGHT — FORM PANEL
+───────────────────────────────────────── */
+.right {
+  background: var(--dark-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 52px;
+  position: relative;
+  border-left: var(--border);
+}
+
+/* top mint accent line */
+.right::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--mint) 0%, transparent 100%);
+}
+
+/* decorative corner bracket */
+.right::after {
+  content: '';
+  position: absolute;
+  bottom: 52px; right: 52px;
+  width: 28px; height: 28px;
+  border-bottom: 1px solid rgba(173,223,179,0.15);
+  border-right: 1px solid rgba(173,223,179,0.15);
+  pointer-events: none;
+}
+
+/* form eyebrow */
+.form-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mint);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.form-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--mint);
+  flex-shrink: 0;
+}
+
+.form-title {
+  font-size: clamp(1.5rem, 2vw + 1rem, 1.875rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+  line-height: 1.12;
+}
+
+.form-sub {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  line-height: var(--leading-prose);
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* form fields */
+.form-group { margin-bottom: 24px; }
+.form-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 10px;
+}
+.form-input {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  outline: none;
+  transition: var(--transition);
+  letter-spacing: -0.2px;
+}
+.form-input::placeholder {
+  color: rgba(255,255,255,0.15);
+  font-weight: 400;
+}
+.form-input:focus {
+  border-color: var(--mint);
+  background: rgba(173,223,179,0.03);
+  box-shadow: 0 0 0 3px rgba(173,223,179,0.06);
+}
+.form-input.error {
+  border-color: rgba(103,107,228,0.8);
+}
+
+.form-error {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--blue-light);
+  margin-top: 7px;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.form-error.visible { display: flex; }
+
+.form-hint {
+  font-size: 9px;
+  color: rgba(255,255,255,0.18);
+  margin-top: 7px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 18px 24px;
+  background: var(--blue);
+  color: var(--white);
+  border: 1.5px solid var(--blue);
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: var(--sh-blue);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+.submit-btn:hover:not(:disabled) {
+  background: var(--mint);
+  color: var(--dark);
+  border-color: var(--mint);
+  box-shadow: var(--sh-mint);
+  transform: translate(-2px, -2px);
+}
+.submit-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--blue);
+}
+.submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.submit-btn.loading .btn-text { visibility: hidden; }
+.submit-btn.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─────────────────────────────────────────
+   SUCCESS STATE
+───────────────────────────────────────── */
+.success-panel {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.success-panel.visible { display: flex; }
+
+.success-icon {
+  width: 52px; height: 52px;
+  background: transparent;
+  border: 1.5px solid var(--mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0 var(--mint);
+  color: var(--mint);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.success-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+.success-name { color: var(--mint); }
+
+.success-sub {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  line-height: var(--leading-prose);
+  border-left: 2px solid var(--blue);
+  padding-left: 16px;
+}
+
+.success-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 16px 28px;
+  background: transparent;
+  color: var(--mint);
+  border: 1.5px solid var(--mint);
+  box-shadow: 4px 4px 0 var(--mint);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.success-cta:hover {
+  background: var(--mint);
+  color: var(--dark);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(173,223,179,0.35);
+}
+
+/* API error */
+.api-error {
+  display: none;
+  padding: 14px 18px;
+  background: transparent;
+  border: 1px solid rgba(103,107,228,0.4);
+  border-left: 3px solid var(--blue-light);
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+  margin-top: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+.api-error.visible { display: block; }
+.api-error a, .api-error .link {
+  color: var(--mint);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  padding: 0 52px;
+  height: 52px;
+  border-top: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  background: rgba(8,11,26,0.8);
+}
+.footer-left {
+  font-size: 10px;
+  color: rgba(255,255,255,0.14);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer-right {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 4px 10px;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 960px) {
+  .main { grid-template-columns: 1fr; }
+  .left { padding: 48px 32px 40px; border-right: none; border-bottom: var(--border); }
+  .right { padding: 48px 32px; }
+  .headline { font-size: clamp(2rem, 6vw + 0.5rem, 2.75rem); letter-spacing: -0.03em; }
+  .topbar { padding: 0 24px; }
+  .footer { padding: 0 24px; }
+  .module-cards { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div class="brand-name">myHQ</div>
+    <div class="brand-divider"></div>
+    <div class="brand-label">Sales L&amp;D Program</div>
+  </div>
+  <div class="topbar-tag">Module 01 &nbsp;&middot;&nbsp; New Hire Onboarding</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LEFT — COPY -->
+  <div class="left">
+    <div class="left-inner">
+
+      <div class="eyebrow">
+        <div class="eyebrow-dot"></div>
+        Now Live &nbsp;&middot;&nbsp; Module 1
+      </div>
+
+      <div class="headline">
+        You just joined<br>
+        <span class="headline-blue">a &#8377;500 crore</span>
+        <span class="headline-mint">platform.</span>
+      </div>
+
+      <div class="copy-block">
+        <div class="copy-line">In a <strong>&#8377;33 lakh crore industry.</strong></div>
+        <div class="copy-line">Most people take months to understand the room they walked into.</div>
+        <div class="copy-line">This module gets you there <strong>in a day.</strong></div>
+      </div>
+
+      <div>
+        <div class="module-cards">
+          <div class="module-card">
+            <div class="mc-num">01</div>
+            <div class="mc-title">India CRE</div>
+            <div class="mc-sub">The industry you just joined &mdash; market, players, deals</div>
+          </div>
+          <div class="module-card">
+            <div class="mc-num">02</div>
+            <div class="mc-title">Origin Story</div>
+            <div class="mc-sub">How myHQ went from a pub to &#8377;500Cr GMV</div>
+          </div>
+          <div class="module-card">
+            <div class="mc-num">03</div>
+            <div class="mc-title">Assessments</div>
+            <div class="mc-sub">Quizzes and completion tracking built in</div>
+          </div>
+          <div class="module-card">
+            <div class="mc-num">04</div>
+            <div class="mc-title">~3 Hours</div>
+            <div class="mc-sub">Go at your own pace. Self-directed learning.</div>
+          </div>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="stat-value"><span>30</span></div>
+            <div class="stat-label">Cities</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value"><span>50K</span>+</div>
+            <div class="stat-label">Seats</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value"><span>10K</span>+</div>
+            <div class="stat-label">B2B Clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value"><span>4.5</span>&#9733;</div>
+            <div class="stat-label">App Rating</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT — FORM -->
+  <div class="right">
+
+    <!-- FORM STATE -->
+    <div id="form-panel">
+      <div class="form-eyebrow">Get Started</div>
+      <div class="form-title">Enter your details<br>to begin.</div>
+      <div class="form-sub">Your progress will be tracked automatically as you move through each chapter. Use your myHQ work email.</div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-name">Full Name</label>
+        <input class="form-input" id="input-name" type="text" placeholder="e.g. Priya Sharma" autocomplete="name">
+        <div class="form-error" id="err-name">Please enter your name</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-email">Work Email</label>
+        <input class="form-input" id="input-email" type="email" placeholder="you@myhq.in" autocomplete="email">
+        <div class="form-error" id="err-email">Use your @myhq.in work email</div>
+        <div class="form-hint">Only @myhq.in addresses accepted</div>
+      </div>
+
+      <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">
+        <span class="btn-text">Begin Module 1 &nbsp;&rarr;</span>
+      </button>
+
+      <div class="api-error" id="api-error">
+        Something went wrong saving your details &mdash; but you can still continue. Your progress may not be tracked this session.
+        <br><br>
+        <span class="link" onclick="proceedAnyway()">Continue anyway &rarr;</span>
+      </div>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-panel" id="success-panel">
+      <div class="success-icon">&#10003;</div>
+      <div>
+        <div class="success-title">Welcome,<br><span class="success-name" id="success-name">&mdash;</span>.</div>
+      </div>
+      <div class="success-sub">You're registered. Your progress will be tracked as you move through each chapter. Start with Chapter 1 &mdash; the industry overview.</div>
+      <button class="success-cta" onclick="goToHub()">Go to Course Hub &nbsp;&rarr;</button>
+    </div>
+
+  </div>
+</div><!-- /main -->
+
+<div class="footer">
+  <div class="footer-left">myHQ Sales L&amp;D &nbsp;&middot;&nbsp; 2026</div>
+  <div class="footer-right">Internal Use Only</div>
+</div>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbymEPPPIHoXCJG_tMYPa742kXgsHEBnRLEoDFeRgv8WI2KO5nd6Pn7RJ2jRf_b9_fuJWg/exec';
+
+let registeredName = '';
+let registeredEmail = '';
+
+function validateName(val) { return val.trim().length >= 2; }
+function validateEmail(val) {
+  const t = val.trim().toLowerCase();
+  return t.endsWith('@myhq.in') && t.length > 8;
+}
+
+function setError(inputId, errId, show) {
+  const input = document.getElementById(inputId);
+  const err = document.getElementById(errId);
+  if (show) { input.classList.add('error'); err.classList.add('visible'); }
+  else { input.classList.remove('error'); err.classList.remove('visible'); }
+}
+
+document.getElementById('input-name').addEventListener('input', function() {
+  if (this.value.trim().length >= 2) setError('input-name', 'err-name', false);
+});
+document.getElementById('input-email').addEventListener('input', function() {
+  if (validateEmail(this.value)) setError('input-email', 'err-email', false);
+});
+document.getElementById('input-email').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleSubmit();
+});
+document.getElementById('input-name').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('input-email').focus();
+});
+
+async function handleSubmit() {
+  const name = document.getElementById('input-name').value.trim();
+  const email = document.getElementById('input-email').value.trim().toLowerCase();
+  let valid = true;
+  if (!validateName(name)) { setError('input-name', 'err-name', true); valid = false; }
+  if (!validateEmail(email)) { setError('input-email', 'err-email', true); valid = false; }
+  if (!valid) return;
+
+  registeredName = name;
+  registeredEmail = email;
+
+  const btn = document.getElementById('submit-btn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  // Save to localStorage immediately
+  saveToStorage(name, email);
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'register', name, email })
+    });
+    showSuccess();
+  } catch (err) {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    document.getElementById('api-error').classList.add('visible');
+  }
+}
+
+function showSuccess() {
+  document.getElementById('success-name').textContent = registeredName.split(' ')[0];
+  document.getElementById('form-panel').style.display = 'none';
+  document.getElementById('success-panel').classList.add('visible');
+}
+
+function saveToStorage(name, email) {
+  // localStorage for persistence across tabs/sessions
+  localStorage.setItem('myhq_name', name);
+  localStorage.setItem('myhq_email', email);
+  localStorage.setItem('myhq_registered_at', new Date().toISOString());
+  // also sessionStorage for same-session reads
+  sessionStorage.setItem('myhq_name', name);
+  sessionStorage.setItem('myhq_email', email);
+}
+
+function goToHub() { window.location.href = 'index.html'; }
+
+function proceedAnyway() {
+  saveToStorage(
+    registeredName || document.getElementById('input-name').value.trim(),
+    registeredEmail || document.getElementById('input-email').value.trim().toLowerCase()
+  );
+  showSuccess();
+}
+
+// If already logged in, skip form
+window.addEventListener('DOMContentLoaded', function() {
+  const savedName = localStorage.getItem('myhq_name');
+  if (savedName) {
+    // Pre-fill the form as courtesy; don't auto-redirect
+    document.getElementById('input-name').value = savedName;
+    const savedEmail = localStorage.getItem('myhq_email') || '';
+    document.getElementById('input-email').value = savedEmail;
+  }
+});
+</script>
+</body>
+</html>

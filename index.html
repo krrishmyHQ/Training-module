@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myHQ — Starter Kit · Module 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1E22AA;
+  --blue-light: #676BE4;
+  --mint: #ADDFB3;
+  --coral: #FF7351;
+  --amber: #FFB848;
+  --dark: #111827;
+  --mid: #6B7280;
+  --light: #F3F4F6;
+  --white: #FFFFFF;
+  --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --text-prose: 500;
+  --leading-prose: 1.72;
+  --border: 2.5px solid #111827;
+  --sh: 5px 5px 0 #111827;
+  --sh-blue: 5px 5px 0 #1E22AA;
+  --sh-coral: 5px 5px 0 #FF7351;
+  --sh-mint: 5px 5px 0 #ADDFB3;
+  --transition: 0.18s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+body {
+  font-family: var(--font);
+  background: #ECECF4;
+  color: var(--dark);
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ── TOPNAV ── */
+.topnav {
+  background: var(--white);
+  border-bottom: var(--border);
+  padding: 0 48px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.nav-brand {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-brand-dot {
+  width: 10px; height: 10px;
+  background: var(--coral);
+  border: 2px solid var(--dark);
+}
+.nav-tag {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-progress-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mid);
+}
+.nav-progress-bar-wrap {
+  width: 120px;
+  height: 6px;
+  background: var(--light);
+  border: 1.5px solid var(--dark);
+}
+.nav-progress-bar {
+  height: 100%;
+  background: var(--mint);
+  border-right: 1.5px solid var(--dark);
+  transition: width 0.6s ease;
+  width: 0%;
+}
+
+/* ── PAGE ── */
+.page {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 40px 48px 80px;
+}
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  border: var(--border);
+  box-shadow: var(--sh);
+  background: var(--white);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.hero-left {
+  background: var(--blue);
+  padding: 56px 52px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  border: 40px solid rgba(255,255,255,0.06);
+}
+.hero-left::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 50px solid rgba(255,255,255,0.04);
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 6px 16px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--mint);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+.hero-h1 {
+  font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.hero-h1 em {
+  color: var(--mint);
+  font-style: normal;
+}
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.78);
+  line-height: var(--leading-prose);
+  max-width: 34rem;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stats-row {
+  display: flex;
+  gap: 0;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+}
+.h-stat {
+  flex: 1;
+  padding: 16px 20px;
+  border-right: 1.5px solid rgba(255,255,255,0.18);
+}
+.h-stat:last-child { border-right: none; }
+.h-stat-n {
+  font-size: 22px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+}
+.h-stat-l {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-right {
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  border-left: var(--border);
+}
+.hero-right-top {
+  padding: 32px 28px;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+}
+.hero-right-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--mint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.hero-right-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+.module-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.module-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.module-step:last-child { border-bottom: none; }
+.ms-num {
+  width: 24px; height: 24px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+.ms-num.done { background: var(--mint); border-color: var(--mint); color: var(--dark); }
+.ms-num.active { background: var(--blue-light); border-color: var(--blue-light); color: var(--white); }
+.ms-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.45;
+}
+.ms-text.active { color: var(--white); }
+.ms-text.done { color: rgba(255,255,255,0.65); text-decoration: line-through; }
+
+.hero-right-bottom {
+  padding: 20px 28px;
+  background: rgba(255,255,255,0.04);
+}
+.overall-progress-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.overall-bar-wrap {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  width: 100%;
+}
+.overall-bar {
+  height: 100%;
+  background: var(--mint);
+  transition: width 0.8s ease;
+  width: 0%;
+}
+
+/* ── WHY STRIP ── */
+.why-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: var(--border);
+  box-shadow: var(--sh);
+  background: var(--white);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.why-cell {
+  padding: 32px 28px;
+  border-right: var(--border);
+  position: relative;
+}
+.why-cell:last-child { border-right: none; }
+.why-num {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--light);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: -12px;
+  position: relative;
+  z-index: 0;
+}
+.why-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.why-body {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mid);
+  line-height: var(--leading-prose);
+  position: relative;
+  z-index: 1;
+}
+.why-tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border: 1.5px solid var(--dark);
+  position: relative;
+  z-index: 1;
+}
+.why-cell:nth-child(1) .why-tag { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.why-cell:nth-child(2) .why-tag { background: var(--coral); color: var(--white); border-color: var(--coral); }
+.why-cell:nth-child(3) .why-tag { background: var(--mint); color: var(--dark); border-color: var(--mint); }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.section-label-num {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mid);
+  letter-spacing: 0.06em;
+}
+.section-label-text {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--dark);
+}
+.section-label-line {
+  flex: 1;
+  height: 2px;
+  background: var(--dark);
+  opacity: 0.12;
+}
+
+/* ── CHAPTER CARDS ── */
+.chapters-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.chapter-card {
+  border: var(--border);
+  background: var(--white);
+  box-shadow: var(--sh);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.chapter-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #111827;
+}
+.chapter-card.locked {
+  opacity: 0.72;
+}
+.chapter-card.locked:hover {
+  transform: none;
+  box-shadow: var(--sh);
+}
+
+.cc-header {
+  padding: 28px 28px 0;
+  position: relative;
+}
+.cc-chapter-num {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+.cc-status {
+  position: absolute;
+  top: 24px; right: 24px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border: 1.5px solid var(--dark);
+}
+.status-unlocked { background: var(--mint); color: var(--dark); }
+.status-locked { background: var(--light); color: var(--mid); }
+.status-complete { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+.cc-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+  margin-bottom: 8px;
+}
+.cc-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.cc-banner {
+  height: 6px;
+  margin: 16px 0 0;
+}
+.ch1-banner { background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 100%); }
+.ch2-banner { background: linear-gradient(90deg, var(--coral) 0%, var(--amber) 100%); }
+
+.cc-body {
+  padding: 20px 28px;
+  flex: 1;
+}
+.cc-desc {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mid);
+  line-height: var(--leading-prose);
+  margin-bottom: 20px;
+}
+.cc-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.cc-topic {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border: 1.5px solid var(--dark);
+  background: var(--light);
+  color: var(--dark);
+}
+
+.cc-meta {
+  display: flex;
+  gap: 20px;
+  padding: 14px 0;
+  border-top: 1.5px solid var(--light);
+  border-bottom: 1.5px solid var(--light);
+  margin-bottom: 20px;
+}
+.cc-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--mid);
+}
+.cc-meta-icon {
+  width: 16px; height: 16px;
+  opacity: 0.5;
+}
+
+.cc-footer {
+  padding: 20px 28px;
+  border-top: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cc-progress-wrap {
+  flex: 1;
+}
+.cc-progress-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.cc-progress-bar-wrap {
+  height: 4px;
+  background: var(--light);
+  border: 1px solid var(--dark);
+}
+.cc-progress-bar {
+  height: 100%;
+  background: var(--blue);
+  transition: width 0.6s ease;
+}
+.ch2-progress { background: var(--coral); }
+
+.cc-btn {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 10px 20px;
+  border: var(--border);
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--dark);
+}
+.cc-btn:hover {
+  background: var(--dark);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--blue);
+}
+.cc-btn.locked-btn {
+  background: var(--light);
+  color: var(--mid);
+  cursor: default;
+  box-shadow: 3px 3px 0 var(--mid);
+}
+.cc-btn.locked-btn:hover {
+  background: var(--light);
+  transform: none;
+  box-shadow: 3px 3px 0 var(--mid);
+}
+.cc-btn.complete-btn {
+  background: var(--mint);
+  color: var(--dark);
+  border-color: var(--dark);
+  box-shadow: 3px 3px 0 var(--dark);
+}
+
+/* ── UNLOCK PANEL ── */
+.unlock-panel {
+  padding: 16px 28px;
+  background: #FFFBEB;
+  border-top: 2px dashed var(--amber);
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+.unlock-panel.visible { display: flex; }
+.unlock-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.unlock-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dark);
+  flex: 1;
+  line-height: 1.5;
+}
+.unlock-text strong { font-weight: 700; }
+.unlock-input-wrap {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+.unlock-input {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 8px 14px;
+  border: var(--border);
+  border-right: none;
+  background: var(--white);
+  width: 140px;
+  color: var(--dark);
+  outline: none;
+}
+.unlock-input::placeholder { color: var(--mid); font-weight: 400; letter-spacing: 0.02em; text-transform: none; font-size: 11px; }
+.unlock-input:focus { border-color: var(--blue); }
+.unlock-btn {
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  border: var(--border);
+  background: var(--amber);
+  color: var(--dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.unlock-btn:hover { background: var(--dark); color: var(--white); }
+.unlock-error {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--coral);
+  padding: 0 28px 12px;
+  display: none;
+}
+.unlock-success {
+  font-size: 10px;
+  font-weight: 700;
+  color: #166534;
+  padding: 0 28px 12px;
+  display: none;
+}
+
+/* ── QUICK STATS BAR ── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: var(--border);
+  box-shadow: var(--sh-blue);
+  background: var(--blue);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.stats-bar-cell {
+  padding: 24px 28px;
+  border-right: 2px solid rgba(255,255,255,0.15);
+}
+.stats-bar-cell:last-child { border-right: none; }
+.sbc-n {
+  font-size: 28px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+}
+.sbc-l {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark);
+  border-top: var(--border);
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-brand { font-size: 13px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
+.footer-note { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.38); }
+.footer-module { font-size: 10px; font-weight: 600; color: var(--mint); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ── SCORE BADGES ── */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border: 1.5px solid var(--dark);
+  background: var(--amber);
+  color: var(--dark);
+}
+.score-badge.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- TOPNAV -->
+<div class="topnav">
+  <div class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    myHQ — Starter Kit
+  </div>
+  <div class="nav-tag">Module 1 · New Hire Onboarding</div>
+  <div class="nav-right">
+    <div class="nav-progress-label" id="nav-progress-text">0 of 2 complete</div>
+    <div class="nav-progress-bar-wrap">
+      <div class="nav-progress-bar" id="nav-bar"></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span id="hub-eyebrow">Module 1 · Now Live</span>
+      </div>
+      <div class="hero-h1">The<br>Starter<br><em>Kit.</em></div>
+      <div class="hero-sub" id="hub-sub">Before you send your first proposal, book your first site visit, or make your first call — you need to know the room you walked into. This module covers the industry, the company, and the context. Everything after this builds on it.</div>
+      <div class="hero-stats-row">
+        <div class="h-stat">
+          <div class="h-stat-n">2</div>
+          <div class="h-stat-l">Chapters</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n">~3 hrs</div>
+          <div class="h-stat-l">Total Time</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n">2</div>
+          <div class="h-stat-l">Assessments</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n">1</div>
+          <div class="h-stat-l">Module</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-top">
+        <div class="hero-right-label">Your Progress</div>
+        <div class="hero-right-title">Module 1 — Onboarding</div>
+        <div class="module-steps">
+          <div class="module-step" id="step-ch1">
+            <div class="ms-num active" id="step-ch1-num">01</div>
+            <div class="ms-text active" id="step-ch1-text">India CRE — The Industry Overview</div>
+          </div>
+          <div class="module-step" id="step-ch2">
+            <div class="ms-num" id="step-ch2-num">02</div>
+            <div class="ms-text" id="step-ch2-text">myHQ — The Origin Story</div>
+          </div>
+          <div class="module-step" style="opacity:0.4; cursor:default;">
+            <div class="ms-num">03</div>
+            <div class="ms-text">How myHQ Works <span style="font-size:9px;color:rgba(255,255,255,0.3);">— Coming Soon</span></div>
+          </div>
+          <div class="module-step" style="opacity:0.4; cursor:default;">
+            <div class="ms-num">04</div>
+            <div class="ms-text">Culture & Policies <span style="font-size:9px;color:rgba(255,255,255,0.3);">— Coming Soon</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right-bottom">
+        <div class="overall-progress-label">
+          <span>Overall Progress</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div class="overall-bar-wrap">
+          <div class="overall-bar" id="overall-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY THIS MATTERS -->
+  <div class="section-label">
+    <div class="section-label-num">—</div>
+    <div class="section-label-text">Why This Module Exists</div>
+    <div class="section-label-line"></div>
+  </div>
+  <div class="why-strip">
+    <div class="why-cell">
+      <div class="why-num">01</div>
+      <div class="why-title">Context before process.</div>
+      <div class="why-body">Most onboarding dumps process on you before you understand why it matters. This module flips it. You learn the industry, the company, and the stakes — before anything about how to sell.</div>
+      <div class="why-tag">Industry Context</div>
+    </div>
+    <div class="why-cell">
+      <div class="why-num">02</div>
+      <div class="why-title">The room you walked into.</div>
+      <div class="why-body">You're operating in a ₹33 lakh crore market. The clients you'll speak to are making decisions worth lakhs — sometimes crores. Knowing the macro makes you credible in the micro.</div>
+      <div class="why-tag">Stakes</div>
+    </div>
+    <div class="why-cell">
+      <div class="why-num">03</div>
+      <div class="why-title">Company before pitch.</div>
+      <div class="why-body">You can't sell myHQ authentically if you don't know where it came from, what it's built on, and who built it. The origin story isn't history — it's your credibility on a client call.</div>
+      <div class="why-tag">Your Edge</div>
+    </div>
+  </div>
+
+  <!-- CHAPTERS -->
+  <div class="section-label">
+    <div class="section-label-num">—</div>
+    <div class="section-label-text">Your Chapters</div>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="chapters-grid">
+
+    <!-- CHAPTER 1 -->
+    <div class="chapter-card" id="card-ch1">
+      <div class="cc-header">
+        <div class="cc-chapter-num">Chapter 01 of 04</div>
+        <div class="cc-status status-unlocked" id="status-ch1">● Unlocked</div>
+        <div class="cc-title">India CRE — The Industry You Just Joined</div>
+        <div class="cc-subtitle">Commercial Real Estate Market Overview</div>
+        <div class="cc-banner ch1-banner"></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-desc">A ₹33 lakh crore market. 72 million square feet absorbed in a single year. 1,700+ Global Capability Centres from the world's biggest companies — all making long-term bets on India. This chapter gives you the macro picture: what the Indian CRE market looks like, who the players are, how deals are structured, and where flex workspace fits in the larger story.</div>
+        <div class="cc-topics">
+          <div class="cc-topic">Market Size</div>
+          <div class="cc-topic">Asset Types</div>
+          <div class="cc-topic">Key Players</div>
+          <div class="cc-topic">GCCs</div>
+          <div class="cc-topic">REITs</div>
+          <div class="cc-topic">Flex Market</div>
+          <div class="cc-topic">Big Deals</div>
+          <div class="cc-topic">2030 Outlook</div>
+        </div>
+        <div class="cc-meta">
+          <div class="cc-meta-item">
+            <svg class="cc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~90 min read
+          </div>
+          <div class="cc-meta-item">
+            <svg class="cc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            Rapid-fire quiz included
+          </div>
+          <div class="cc-meta-item">
+            <svg class="cc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Completion code unlocked
+          </div>
+        </div>
+      </div>
+      <div class="cc-footer">
+        <div class="cc-progress-wrap">
+          <div class="cc-progress-label">Progress</div>
+          <div class="cc-progress-bar-wrap">
+            <div class="cc-progress-bar" id="bar-ch1" style="width: 0%"></div>
+          </div>
+        </div>
+        <span class="score-badge hidden" id="score-ch1">— / 10</span>
+        <a href="chapter1.html" class="cc-btn" id="btn-ch1">Begin Chapter →</a>
+      </div>
+    </div>
+
+    <!-- CHAPTER 2 -->
+    <div class="chapter-card locked" id="card-ch2">
+      <div class="cc-header">
+        <div class="cc-chapter-num">Chapter 02 of 04</div>
+        <div class="cc-status status-locked" id="status-ch2">🔒 Locked</div>
+        <div class="cc-title">myHQ — The Origin Story</div>
+        <div class="cc-subtitle">Founding Journey · Milestones · The Team</div>
+        <div class="cc-banner ch2-banner"></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-desc">They started in a pub that sat empty before noon. Today it's 50,000+ seats across 30 cities and ₹500 crore in annual GMV. This chapter covers the founding moment, the fundraising journey, the key milestones, the people who built it — and where it's going next. The origin story isn't nostalgia. It's your credibility on a client call.</div>
+        <div class="cc-topics">
+          <div class="cc-topic">Founding Story</div>
+          <div class="cc-topic">Fundraising</div>
+          <div class="cc-topic">Milestones</div>
+          <div class="cc-topic">Founding Team</div>
+          <div class="cc-topic">Scale Journey</div>
+          <div class="cc-topic">International Plans</div>
+        </div>
+        <div class="cc-meta">
+          <div class="cc-meta-item">
+            <svg class="cc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~60 min read
+          </div>
+          <div class="cc-meta-item">
+            <svg class="cc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            Quiz + scenario included
+          </div>
+          <div class="cc-meta-item">
+            <svg class="cc-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Completion code unlocked
+          </div>
+        </div>
+      </div>
+      <div class="unlock-panel visible" id="unlock-panel-ch2">
+        <div class="unlock-icon">🔑</div>
+        <div class="unlock-text">Complete Chapter 1 to get your <strong>unlock code</strong>. Enter it below to begin.</div>
+        <div class="unlock-input-wrap">
+          <input class="unlock-input" id="unlock-input-ch2" type="text" placeholder="Enter code..." maxlength="12">
+          <button class="unlock-btn" onclick="tryUnlock()">Unlock</button>
+        </div>
+      </div>
+      <div class="unlock-error" id="unlock-error">Incorrect code. Complete Chapter 1 to find yours.</div>
+      <div class="unlock-success" id="unlock-success">✓ Chapter 2 unlocked! Starting now...</div>
+      <div class="cc-footer">
+        <div class="cc-progress-wrap">
+          <div class="cc-progress-label">Progress</div>
+          <div class="cc-progress-bar-wrap">
+            <div class="cc-progress-bar ch2-progress" id="bar-ch2" style="width: 0%"></div>
+          </div>
+        </div>
+        <span class="score-badge hidden" id="score-ch2">— / 3</span>
+        <button class="cc-btn locked-btn" id="btn-ch2" disabled>🔒 Locked</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- QUICK STATS BAR -->
+  <div class="section-label">
+    <div class="section-label-num">—</div>
+    <div class="section-label-text">The Program at a Glance</div>
+    <div class="section-label-line"></div>
+  </div>
+  <div class="stats-bar">
+    <div class="stats-bar-cell">
+      <div class="sbc-n">4</div>
+      <div class="sbc-l">Chapters in Module 1</div>
+    </div>
+    <div class="stats-bar-cell">
+      <div class="sbc-n">~3 hrs</div>
+      <div class="sbc-l">Estimated Total Time</div>
+    </div>
+    <div class="stats-bar-cell">
+      <div class="sbc-n">2</div>
+      <div class="sbc-l">Live Assessments</div>
+    </div>
+    <div class="stats-bar-cell">
+      <div class="sbc-n">1</div>
+      <div class="sbc-l">Goal: Your First Deal</div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<div class="footer">
+  <div class="footer-brand">myHQ — Starter Kit</div>
+  <div class="footer-note">Module 1 · Onboarding · New Hire Track</div>
+  <div class="footer-module">myHQ L&D Program · 2026</div>
+</div>
+
+<script src="progress.js"></script>
+<script>
+// ── SESSION — reads from localStorage first, fallback sessionStorage ──
+const myhqName = localStorage.getItem('myhq_name') || sessionStorage.getItem('myhq_name') || '';
+const myhqEmail = localStorage.getItem('myhq_email') || sessionStorage.getItem('myhq_email') || '';
+
+// Redirect to landing if no session (check both localStorage and sessionStorage)
+if (!myhqName || !myhqEmail) {
+  const _p = new URLSearchParams(window.location.search);
+  if (!_p.get('ch1') && !_p.get('ch2')) {
+    window.location.href = 'landing.html';
+  }
+}
+
+// Sync to sessionStorage for same-session compatibility
+if (myhqName) { sessionStorage.setItem('myhq_name', myhqName); sessionStorage.setItem('myhq_email', myhqEmail); }
+
+// Personalise the welcome
+if (myhqName) {
+  const firstName = myhqName.split(' ')[0];
+  document.getElementById('hub-eyebrow').textContent = 'Welcome back, ' + firstName + ' · Module 1';
+  document.getElementById('hub-sub').textContent = 'Pick up where you left off, ' + firstName + '. The industry context and the company story — in that order. Everything after this builds on it.';
+}
+
+// ── COMPLETION CODE ──
+const CHAPTER1_CODE = 'CRACKED';
+const CHAPTER1_SCORE_KEY = 'ch1_score';
+const CHAPTER2_SCORE_KEY = 'ch2_score';
+
+// Check session state on load
+let ch1Complete = false;
+let ch2Complete = false;
+
+function updateProgressUI() {
+  let completed = (ch1Complete ? 1 : 0) + (ch2Complete ? 1 : 0);
+  let pct = Math.round((completed / 2) * 100);
+
+  // Nav bar
+  document.getElementById('nav-bar').style.width = pct + '%';
+  document.getElementById('nav-progress-text').textContent = completed + ' of 2 complete';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('overall-bar').style.width = pct + '%';
+
+  // Step indicators
+  if (ch1Complete) {
+    document.getElementById('step-ch1-num').className = 'ms-num done';
+    document.getElementById('step-ch1-num').textContent = '✓';
+    document.getElementById('step-ch1-text').className = 'ms-text done';
+    document.getElementById('bar-ch1').style.width = '100%';
+    document.getElementById('status-ch1').className = 'cc-status status-complete';
+    document.getElementById('status-ch1').textContent = '✓ Complete';
+    document.getElementById('btn-ch1').textContent = 'Review Chapter →';
+    document.getElementById('card-ch1').classList.remove('locked');
+  }
+
+  if (ch2Complete) {
+    document.getElementById('step-ch2-num').className = 'ms-num done';
+    document.getElementById('step-ch2-num').textContent = '✓';
+    document.getElementById('step-ch2-text').className = 'ms-text done';
+    document.getElementById('bar-ch2').style.width = '100%';
+    document.getElementById('status-ch2').className = 'cc-status status-complete';
+    document.getElementById('status-ch2').textContent = '✓ Complete';
+    document.getElementById('btn-ch2').textContent = 'Review Chapter →';
+    document.getElementById('btn-ch2').className = 'cc-btn complete-btn';
+    document.getElementById('btn-ch2').disabled = false;
+    document.getElementById('btn-ch2').onclick = function(){ window.location.href='chapter2.html'; };
+    document.getElementById('card-ch2').classList.remove('locked');
+    document.getElementById('unlock-panel-ch2').classList.remove('visible');
+  }
+
+  if (ch2Complete || ch1Complete) {
+    document.getElementById('step-ch2-num').classList.remove('ms-num');
+    if (!ch2Complete) {
+      document.getElementById('step-ch2-num').className = 'ms-num active';
+      document.getElementById('step-ch2-text').className = 'ms-text active';
+    }
+  }
+}
+
+// ── URL PARAM: chapter1=done&score=X ──
+// Chapter 1 passes back completion via URL param on return
+const params = new URLSearchParams(window.location.search);
+if (params.get('ch1') === 'done') {
+  ch1Complete = true;
+  // Persist to localStorage
+  localStorage.setItem('myhq_ch1_complete', 'true');
+  const s = params.get('score');
+  if (s) {
+    localStorage.setItem('myhq_ch1_score', s + ' / 10');
+    document.getElementById('score-ch1').textContent = s + ' / 10';
+    document.getElementById('score-ch1').classList.remove('hidden');
+  }
+  // Unlock chapter 2 card state but still require code entry
+  document.getElementById('card-ch2').classList.remove('locked');
+  document.getElementById('status-ch2').className = 'cc-status status-unlocked';
+  document.getElementById('status-ch2').textContent = '🔑 Code Required';
+  updateProgressUI();
+  // Clean URL
+  window.history.replaceState({}, document.title, window.location.pathname);
+}
+
+if (params.get('ch2') === 'done') {
+  ch2Complete = true;
+  ch1Complete = true;
+  // Persist to localStorage
+  localStorage.setItem('myhq_ch2_complete', 'true');
+  localStorage.setItem('myhq_ch1_complete', 'true');
+  const s = params.get('score');
+  if (s) {
+    localStorage.setItem('myhq_ch2_score', s + ' / 3');
+    document.getElementById('score-ch2').textContent = s + ' / 3';
+    document.getElementById('score-ch2').classList.remove('hidden');
+  }
+  document.getElementById('bar-ch2').style.width = '100%';
+  updateProgressUI();
+  window.history.replaceState({}, document.title, window.location.pathname);
+}
+
+updateProgressUI();
+
+// ── UNLOCK LOGIC ──
+function tryUnlock() {
+  const input = document.getElementById('unlock-input-ch2').value.trim().toUpperCase();
+  const error = document.getElementById('unlock-error');
+  const success = document.getElementById('unlock-success');
+
+  if (input === CHAPTER1_CODE) {
+    error.style.display = 'none';
+    success.style.display = 'block';
+    document.getElementById('unlock-panel-ch2').style.opacity = '0.5';
+    setTimeout(() => {
+      window.location.href = 'chapter2.html';
+    }, 1200);
+  } else {
+    success.style.display = 'none';
+    error.style.display = 'block';
+    document.getElementById('unlock-input-ch2').style.borderColor = 'var(--coral)';
+    setTimeout(() => {
+      document.getElementById('unlock-input-ch2').style.borderColor = '';
+    }, 1500);
+  }
+}
+
+// Enter key on unlock input
+document.getElementById('unlock-input-ch2').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryUnlock();
+});
+</script>
+</body>
+</html>

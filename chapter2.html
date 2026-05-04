@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myHQ — The Origin Story · Chapter 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1E22AA;
+  --blue-light: #676BE4;
+  --mint: #ADDFB3;
+  --coral: #FF7351;
+  --amber: #FFB848;
+  --dark: #111827;
+  --mid: #6B7280;
+  --light: #F3F4F6;
+  --white: #FFFFFF;
+  --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --leading-prose: 1.72;
+  --border: 2.5px solid #111827;
+  --border-light: 1.5px solid #111827;
+  --sh: 5px 5px 0 #111827;
+  --sh-blue: 5px 5px 0 #1E22AA;
+  --sh-coral: 5px 5px 0 #FF7351;
+  --sh-amber: 5px 5px 0 #FFB848;
+  --sh-mint: 5px 5px 0 #ADDFB3;
+  --transition: 0.18s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+body {
+  font-family: var(--font);
+  background: #ECECF4;
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ── TOPNAV ── */
+.topnav {
+  background: var(--white);
+  border-bottom: var(--border);
+  padding: 0 48px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.nav-brand {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--coral);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-brand-dot { width: 10px; height: 10px; background: var(--coral); border: 2px solid var(--dark); }
+.nav-tag { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); }
+.nav-pills { display: flex; gap: 6px; }
+.nav-pill {
+  font-size: 11px; font-weight: 600; padding: 5px 14px;
+  border: var(--border); cursor: pointer; background: var(--white);
+  transition: var(--transition); font-family: var(--font);
+  text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; color: var(--dark);
+}
+.nav-pill:hover, .nav-pill.active { background: var(--coral); color: var(--white); border-color: var(--coral); }
+.nav-pill.hub { background: var(--light); }
+.nav-pill.hub:hover { background: var(--dark); color: var(--white); border-color: var(--dark); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--coral);
+  border-bottom: var(--border);
+  padding: 60px 48px 52px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 41px),
+    repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(17,24,39,0.03) 40px, rgba(17,24,39,0.03) 41px);
+}
+.hero-geo-1 {
+  position: absolute;
+  top: -40px; right: 120px;
+  width: 220px; height: 220px;
+  background: var(--amber);
+  opacity: 0.35;
+  transform: rotate(20deg);
+  border: 3px solid rgba(17,24,39,0.15);
+}
+.hero-geo-2 {
+  position: absolute;
+  bottom: -80px; right: 320px;
+  width: 280px; height: 280px;
+  background: rgba(255,255,255,0.07);
+  border: 3px solid rgba(255,255,255,0.12);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 860px; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(17,24,39,0.18);
+  border: 1.5px solid rgba(17,24,39,0.22);
+  padding: 6px 16px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+.hero-h1 {
+  font-size: clamp(2.1rem, 3.5vw + 1rem, 3.35rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+.hero-h1 em { color: var(--dark); font-style: normal; }
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.82);
+  line-height: var(--leading-prose);
+  max-width: 36rem;
+  margin-bottom: 36px;
+}
+.hero-stats {
+  display: flex;
+  gap: 0;
+  border: 2px solid rgba(17,24,39,0.25);
+  max-width: 560px;
+  background: rgba(17,24,39,0.12);
+}
+.h-stat { flex: 1; padding: 14px 18px; border-right: 1.5px solid rgba(17,24,39,0.2); }
+.h-stat:last-child { border-right: none; }
+.h-stat-n { font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--white); letter-spacing: -0.02em; margin-bottom: 2px; }
+.h-stat-l { font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ── MAIN LAYOUT ── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  min-height: 80vh;
+  max-width: 100%;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+}
+.section-label-num { font-size: 11px; font-weight: 600; color: var(--mid); letter-spacing: 0.06em; }
+.section-label-text { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
+.section-label-line { flex: 1; height: 2px; background: var(--dark); opacity: 0.12; }
+
+/* ── TIMELINE PANE ── */
+.timeline-pane {
+  padding: 48px 48px 60px;
+  border-right: var(--border);
+  background: #ECECF4;
+  overflow-y: auto;
+}
+.tl-track { position: relative; padding-left: 52px; }
+.tl-spine-wrap {
+  position: absolute;
+  left: 20px; top: 8px; bottom: 8px;
+  width: 3px;
+  background: rgba(17,24,39,0.1);
+}
+.tl-spine-fill {
+  position: absolute;
+  left: 0; top: 0; width: 100%;
+  background: var(--coral);
+  transition: height 0.5s ease;
+}
+.tl-item { position: relative; margin-bottom: 12px; cursor: pointer; }
+.tl-dot-wrap { position: absolute; left: -42px; top: 18px; z-index: 2; }
+.tl-dot {
+  width: 20px; height: 20px;
+  background: #ECECF4;
+  border: 2.5px solid rgba(17,24,39,0.2);
+  transition: all 0.2s ease;
+}
+.tl-item:hover .tl-dot, .tl-item.active .tl-dot {
+  background: var(--coral);
+  border-color: var(--coral);
+  box-shadow: var(--sh-coral);
+  transform: scale(1.15);
+}
+.tl-item.milestone .tl-dot { border-color: var(--amber); }
+.tl-item.milestone:hover .tl-dot, .tl-item.milestone.active .tl-dot {
+  background: var(--amber);
+  border-color: var(--dark);
+  box-shadow: var(--sh-amber);
+}
+.tl-item.covid .tl-dot { border-color: var(--mid); }
+.tl-item.covid:hover .tl-dot, .tl-item.covid.active .tl-dot {
+  background: var(--dark);
+  border-color: var(--dark);
+  box-shadow: var(--sh);
+}
+.tl-card {
+  border: var(--border);
+  padding: 18px 22px;
+  background: var(--white);
+  transition: all 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+.tl-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 5px; height: 100%;
+  background: transparent;
+  transition: background 0.2s;
+}
+.tl-item:hover .tl-card { box-shadow: var(--sh); transform: translate(-2px, -2px); }
+.tl-item.active .tl-card { background: #FFF8F6; box-shadow: var(--sh-coral); transform: translate(-2px, -2px); }
+.tl-item.active .tl-card::before { background: var(--coral); }
+.tl-item.milestone.active .tl-card { background: #FFFBEB; box-shadow: var(--sh-amber); }
+.tl-item.milestone.active .tl-card::before { background: var(--amber); }
+.tl-item.covid.active .tl-card { background: #F9FAFB; box-shadow: var(--sh); }
+.tl-item.covid.active .tl-card::before { background: var(--dark); }
+
+.tl-era {
+  font-size: 10px; font-weight: 600; color: var(--coral);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 7px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tl-item.milestone .tl-era { color: #8a5a00; }
+.tl-item.covid .tl-era { color: var(--mid); }
+.era-dot { width: 6px; height: 6px; background: var(--coral); flex-shrink: 0; }
+.tl-item.milestone .era-dot { background: var(--amber); }
+.tl-item.covid .era-dot { background: var(--mid); }
+
+.tl-event {
+  font-size: 15px; font-weight: 700; color: var(--dark);
+  line-height: 1.35; margin-bottom: 0;
+}
+.tl-detail {
+  display: none; font-size: 13px; color: var(--mid);
+  line-height: var(--leading-prose); margin-top: 14px;
+  font-weight: 500;
+}
+.tl-item.active .tl-detail { display: block; }
+.tl-detail strong { color: var(--dark); font-weight: 700; }
+
+.tl-badge {
+  display: inline-block;
+  font-size: 9px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border: 1.5px solid var(--dark);
+  margin-top: 12px; margin-right: 6px;
+}
+.badge-coral { background: var(--coral); color: var(--white); border-color: var(--coral); }
+.badge-amber { background: var(--amber); color: var(--dark); border-color: var(--dark); }
+.badge-blue { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.badge-green { background: var(--mint); color: var(--dark); border-color: var(--dark); }
+.badge-dark { background: var(--dark); color: var(--white); border-color: var(--dark); }
+
+.tl-visual {
+  display: flex; gap: 14px; align-items: flex-start;
+  margin: 14px 0;
+  padding: 14px;
+  background: rgba(255,184,72,0.07);
+  border: 1.5px solid rgba(255,184,72,0.35);
+  border-left: 4px solid var(--amber);
+}
+.tl-visual-icon { flex-shrink: 0; width: 48px; height: 48px; }
+.tl-visual-text { font-size: 12px; color: var(--dark); line-height: 1.6; }
+
+.expansion-callout {
+  display: flex; gap: 14px;
+  margin: 14px 0;
+  padding: 14px;
+  background: rgba(30,34,170,0.05);
+  border: 1.5px solid rgba(30,34,170,0.2);
+  border-left: 4px solid var(--blue);
+}
+.exp-icon { width: 28px; height: 28px; flex-shrink: 0; opacity: 0.5; }
+.exp-icon svg { width: 100%; height: 100%; stroke: var(--blue); fill: none; }
+.expansion-callout .exp-label { font-size: 10px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.exp-text { font-size: 12px; color: var(--mid); line-height: var(--leading-prose); font-weight: 500; }
+.exp-text a { color: var(--blue); font-weight: 700; }
+.exp-leads { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.exp-lead-chip {
+  font-size: 9px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 3px 10px;
+  background: var(--blue); color: var(--white);
+  border: 1px solid var(--dark);
+}
+
+/* Photo upload slots */
+.tl-photo-slot {
+  margin-top: 14px;
+  border: 2px dashed rgba(17,24,39,0.18);
+  background: var(--light);
+  overflow: hidden;
+  position: relative;
+}
+.upload-overlay {
+  padding: 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  text-align: center;
+}
+.upload-icon { opacity: 0.25; }
+.upload-icon svg { width: 28px; height: 28px; stroke: var(--dark); }
+.upload-label { font-size: 11px; font-weight: 700; color: var(--mid); }
+.upload-hint { font-size: 10px; color: rgba(107,114,128,0.6); }
+.upload-btn {
+  font-family: var(--font);
+  font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 6px 14px; border: var(--border);
+  background: var(--white); cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  transition: var(--transition); margin-top: 4px;
+}
+.upload-btn svg { width: 12px; height: 12px; stroke: var(--dark); }
+.upload-btn:hover { background: var(--dark); color: var(--white); }
+.upload-btn:hover svg { stroke: var(--white); }
+.photo-caption { font-size: 10px; color: var(--mid); padding: 6px 14px; border-top: 1px solid rgba(17,24,39,0.1); background: rgba(0,0,0,0.02); }
+
+/* Stats row below timeline */
+.tl-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: var(--border);
+  box-shadow: var(--sh-coral);
+  background: var(--white);
+  margin-top: 32px;
+  overflow: hidden;
+}
+.stat-card {
+  padding: 20px 20px;
+  border-right: var(--border);
+  text-align: left;
+}
+.stat-card:last-child { border-right: none; }
+.stat-num { font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--coral); letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+.stat-lbl { font-size: 10px; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ── TEAM PANE ── */
+.founders-pane {
+  background: var(--dark);
+  border-left: var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.pane-head {
+  padding: 28px 24px 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+}
+.pane-eyebrow { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--coral); margin-bottom: 4px; }
+.pane-title { font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
+.pane-sub { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.45); margin-top: 4px; line-height: 1.5; }
+.team-section-label {
+  font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.3);
+  padding: 12px 24px 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.founder-card {
+  border-bottom: 1.5px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  transition: background 0.15s;
+  overflow: hidden;
+}
+.founder-card:hover { background: rgba(255,255,255,0.03); }
+.founder-banner {
+  position: relative;
+  height: 60px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+  overflow: hidden;
+  border-bottom: 1.5px solid rgba(255,255,255,0.08);
+}
+.founder-card.teal .founder-banner { background: linear-gradient(135deg, #1E22AA 0%, #96E6DC 100%); }
+.founder-card.coral .founder-banner { background: linear-gradient(135deg, var(--coral) 0%, var(--amber) 100%); }
+.founder-card.mint .founder-banner { background: linear-gradient(135deg, #1a6b23 0%, var(--mint) 100%); }
+.founder-card.growth .founder-banner { background: linear-gradient(135deg, #1E22AA 0%, #96E6DC 100%); }
+.founder-banner-bg { position: absolute; inset: 0; }
+.founder-banner-pattern {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px);
+}
+.founder-pulse {
+  position: absolute; top: 8px; right: 10px;
+  font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.7);
+  display: flex; align-items: center; gap: 4px;
+}
+.pulse-dot {
+  width: 6px; height: 6px; background: var(--mint); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+.founder-initials-block {
+  position: absolute; bottom: 8px; left: 14px;
+  font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.9);
+  letter-spacing: 1px;
+}
+.founder-banner-role {
+  position: absolute; bottom: 10px; right: 10px;
+  font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.55);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.founder-body { padding: 12px 16px 14px; }
+.founder-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.founder-tagline { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.48); line-height: 1.55; margin-bottom: 8px; }
+.founder-chips { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+.chip {
+  font-size: 8px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 2px 8px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.55);
+}
+.chip.accent { background: rgba(173,223,179,0.12); border-color: rgba(173,223,179,0.3); color: var(--mint); }
+.founder-cta {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 9px; font-weight: 600; color: var(--coral);
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  transition: gap 0.15s;
+}
+.founder-card:hover .founder-cta { gap: 8px; }
+.founder-cta svg { width: 10px; height: 10px; }
+
+/* ── QUIZ SECTION ── */
+.quiz-section {
+  border-top: var(--border);
+  border-bottom: var(--border);
+  background: var(--white);
+  box-shadow: var(--sh);
+  margin: 0 48px 40px;
+  overflow: hidden;
+}
+.quiz-header {
+  background: var(--coral);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--border);
+}
+.quiz-header-left { }
+.qh-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.qh-title { font-size: 16px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
+.qh-score {
+  font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--white);
+  background: rgba(17,24,39,0.2); border: 1.5px solid rgba(255,255,255,0.2);
+  padding: 8px 18px;
+}
+
+.quiz-body { padding: 36px 32px; }
+
+/* Progress dots */
+.q-progress {
+  display: flex; gap: 8px; margin-bottom: 28px; align-items: center;
+}
+.q-dot {
+  width: 10px; height: 10px;
+  border: 2px solid var(--mid);
+  background: var(--white);
+  transition: var(--transition);
+}
+.q-dot.active { border-color: var(--coral); background: var(--coral); }
+.q-dot.correct { border-color: var(--mint); background: var(--mint); border-color: var(--dark); }
+.q-dot.wrong { border-color: var(--dark); background: var(--dark); }
+.q-progress-label { font-size: 10px; font-weight: 600; color: var(--mid); margin-left: 8px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+.q-number { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--coral); margin-bottom: 8px; }
+.q-type-tag {
+  display: inline-block;
+  font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 3px 10px; border: 1.5px solid var(--dark);
+  background: var(--amber); color: var(--dark);
+  margin-bottom: 14px;
+}
+.q-type-tag.scenario { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.q-text {
+  font-size: 16px; font-weight: 700; color: var(--dark);
+  line-height: 1.42; margin-bottom: 8px;
+}
+.q-setup {
+  font-size: 13px; font-weight: 500; color: var(--mid);
+  line-height: var(--leading-prose); margin-bottom: 20px;
+  padding: 14px 18px;
+  background: #F9FAFB;
+  border-left: 4px solid var(--amber);
+  border: 1.5px solid var(--light);
+  border-left: 4px solid var(--amber);
+}
+
+.q-options { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.q-option {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px;
+  border: var(--border);
+  background: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  font-family: var(--font);
+  width: 100%;
+}
+.q-option:hover { background: var(--light); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--dark); }
+.q-option.selected { background: var(--blue); color: var(--white); border-color: var(--blue); box-shadow: var(--sh-blue); }
+.q-option.correct-ans { background: var(--mint); border-color: var(--dark); box-shadow: var(--sh-mint); }
+.q-option.wrong-ans { background: var(--coral); color: var(--white); border-color: var(--coral); }
+.q-option.disabled { cursor: default; pointer-events: none; }
+.opt-letter {
+  font-size: 11px; font-weight: 600; color: var(--mid);
+  min-width: 18px; padding-top: 1px;
+}
+.q-option.selected .opt-letter, .q-option.correct-ans .opt-letter { color: var(--dark); }
+.q-option.wrong-ans .opt-letter { color: rgba(255,255,255,0.7); }
+.opt-text { font-size: 13px; font-weight: 500; color: var(--dark); line-height: var(--leading-prose); }
+.q-option.selected .opt-text { color: var(--white); }
+.q-option.wrong-ans .opt-text { color: var(--white); }
+
+.q-explanation {
+  display: none;
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: #F0FFF4;
+  border: 1.5px solid var(--dark);
+  border-left: 4px solid var(--mint);
+  font-size: 13px; color: var(--dark); line-height: 1.7; font-weight: 500;
+}
+.q-explanation.wrong-exp {
+  background: #FFF8F6;
+  border-left-color: var(--coral);
+}
+.q-explanation.visible { display: block; }
+.q-explanation .exp-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 6px; }
+
+.q-next-btn {
+  font-family: var(--font);
+  font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 12px 24px; border: var(--border);
+  background: var(--dark); color: var(--white);
+  cursor: pointer; margin-top: 20px;
+  box-shadow: var(--sh); transition: var(--transition);
+  display: none;
+}
+.q-next-btn.visible { display: inline-block; }
+.q-next-btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--coral); }
+
+/* Quiz result */
+.quiz-result {
+  display: none;
+  padding: 36px 32px;
+  text-align: center;
+}
+.quiz-result.visible { display: block; }
+.qr-icon { font-size: 48px; margin-bottom: 12px; }
+.qr-title { font-size: 28px; font-weight: 800; color: var(--dark); letter-spacing: -0.03em; margin-bottom: 8px; }
+.qr-sub { font-size: 13px; font-weight: 500; color: var(--mid); line-height: var(--leading-prose); max-width: 480px; margin: 0 auto 24px; }
+.qr-score-row {
+  display: flex; gap: 0; max-width: 360px; margin: 0 auto 24px;
+  border: var(--border); box-shadow: var(--sh);
+}
+.qrs { flex: 1; padding: 16px 0; border-right: var(--border); }
+.qrs:last-child { border-right: none; }
+.qrs-n { font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--coral); letter-spacing: -0.02em; }
+.qrs-l { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); }
+
+/* ── COMPLETION GATE ── */
+.completion-gate {
+  border: var(--border);
+  box-shadow: var(--sh-amber);
+  background: var(--white);
+  margin: 0 48px 48px;
+  overflow: hidden;
+  display: none;
+}
+.completion-gate.visible { display: block; }
+.cg-header {
+  background: var(--dark);
+  padding: 20px 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.cg-header-icon { font-size: 24px; }
+.cg-header-text { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); }
+.cg-header-sub { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.48); margin-top: 2px; line-height: 1.5; }
+.cg-body { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+.cg-cell { padding: 28px 28px; border-right: var(--border); }
+.cg-cell:last-child { border-right: none; }
+.cg-cell-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 10px; }
+.cg-score-num { font-size: 48px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--coral); letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
+.cg-score-label { font-size: 11px; color: var(--mid); }
+.cg-takeaways { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.cg-takeaway { display: flex; gap: 10px; font-size: 12px; font-weight: 500; color: var(--dark); line-height: var(--leading-prose); }
+.cg-takeaway::before { content: '→'; color: var(--coral); font-weight: 600; flex-shrink: 0; }
+.cg-code-cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--dark); padding: 28px;
+  border-left: var(--border); text-align: center;
+}
+.cg-code-label { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+.cg-code-box {
+  font-size: 24px; font-weight: 800; letter-spacing: 0.2em; color: var(--amber);
+  border: 2.5px solid var(--amber); padding: 12px 20px; margin-bottom: 12px;
+  box-shadow: 4px 4px 0 var(--amber); cursor: pointer; transition: var(--transition); user-select: all;
+}
+.cg-code-box:hover { background: var(--amber); color: var(--dark); }
+.cg-code-hint { font-size: 10px; color: rgba(255,255,255,0.3); line-height: 1.5; }
+.cg-actions {
+  padding: 20px 28px; border-top: var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  background: #F9FAFB;
+}
+.cg-action-text { font-size: 12px; color: var(--mid); font-weight: 500; }
+.cg-action-text strong { color: var(--dark); font-weight: 700; }
+.cg-btn {
+  font-family: var(--font);
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 12px 24px; border: var(--border);
+  background: var(--coral); color: var(--white); text-decoration: none;
+  display: inline-block; box-shadow: var(--sh); transition: var(--transition); cursor: pointer;
+}
+.cg-btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--dark); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+  z-index: 500; display: none;
+  align-items: center; justify-content: center;
+  padding: 24px; backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white); border: var(--border); box-shadow: 8px 8px 0 var(--dark);
+  width: 100%; max-width: 560px; max-height: 88vh; overflow: hidden;
+  display: flex; flex-direction: column;
+  animation: modalIn 0.2s ease;
+}
+@keyframes modalIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
+.modal-header {
+  position: relative; height: 130px; flex-shrink: 0;
+  display: flex; align-items: flex-end; padding: 0 24px 16px; gap: 16px;
+  overflow: hidden; border-bottom: var(--border);
+}
+.modal-header-bg { position: absolute; inset: 0; }
+.modal-header-pattern {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.04) 20px, rgba(255,255,255,0.04) 21px);
+}
+.modal-close {
+  position: absolute; top: 12px; right: 14px;
+  background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3);
+  color: var(--white); width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 13px; transition: background 0.15s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.25); }
+.modal-avatar {
+  width: 60px; height: 60px; background: rgba(255,255,255,0.2);
+  border: 2.5px solid rgba(255,255,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800; color: var(--white); flex-shrink: 0;
+  position: relative; z-index: 1;
+}
+.modal-header-text { position: relative; z-index: 1; }
+.modal-name { font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
+.modal-role-tag {
+  display: inline-block; margin-top: 5px;
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+  font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.85);
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px;
+}
+.modal-body { overflow-y: auto; flex: 1; padding: 24px; }
+.modal-section-title {
+  font-size: 9px; font-weight: 600; color: var(--coral);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 8px; margin-top: 20px;
+  padding-bottom: 6px; border-bottom: 1.5px solid var(--light);
+  display: flex; align-items: center; gap: 8px;
+}
+.modal-section-title::before { content:''; display:inline-block; width:12px; height:2.5px; background:var(--coral); }
+.modal-section-title:first-child { margin-top: 0; }
+.modal-bio { font-size: 12.5px; color: var(--mid); line-height: 1.8; font-weight: 500; }
+.modal-anecdote {
+  background: rgba(255,184,72,0.06); border: 1.5px solid rgba(255,184,72,0.4);
+  border-left: 4px solid var(--amber); padding: 14px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.anecdote-img { width: 80px; height: 54px; object-fit: cover; border: 1.5px solid rgba(0,0,0,0.12); flex-shrink: 0; }
+.anecdote-text { font-size: 12px; color: var(--mid); line-height: 1.65; font-weight: 500; font-style: italic; }
+.modal-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.fact-item { background: var(--light); border: 1.5px solid rgba(17,24,39,0.08); padding: 10px 12px; }
+.fact-label { font-size: 9px; font-weight: 600; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+.fact-value { font-size: 12px; font-weight: 700; color: var(--dark); line-height: 1.3; }
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.modal-tag { font-size: 10px; font-weight: 700; padding: 4px 12px; background: #FFF0EC; border: 1.5px solid var(--coral); color: var(--coral); }
+.modal-quote {
+  background: var(--dark); color: var(--white);
+  font-style: italic; font-size: 14px; line-height: 1.6;
+  padding: 20px 20px 20px 36px; position: relative; border: var(--border);
+}
+.modal-quote::before { content:'"'; font-size: 56px; color: var(--coral); position: absolute; top: -8px; left: 14px; line-height: 1; }
+.modal-fun-fact { background: rgba(173,223,179,0.1); border: 1.5px solid rgba(173,223,179,0.5); border-left: 4px solid var(--mint); padding: 14px; }
+.modal-fun-fact-label { font-size: 9px; font-weight: 600; color: #1a5228; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.modal-fun-fact-text, .modal-placeholder-fact { font-size: 12px; color: var(--mid); line-height: 1.65; }
+.modal-placeholder-fact { font-style: italic; }
+.modal-linkedin {
+  display: inline-flex; align-items: center; gap: 7px; margin-top: 16px;
+  background: var(--blue); color: var(--white); border: 1.5px solid var(--dark);
+  padding: 8px 18px; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.modal-linkedin:hover { box-shadow: var(--sh); transform: translate(-2px,-2px); }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark); border-top: var(--border);
+  padding: 24px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-brand { font-size: 13px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
+.footer-note { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.38); }
+.footer-module { font-size: 10px; font-weight: 600; color: var(--coral); text-transform: uppercase; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<!-- TOPNAV -->
+<div class="topnav">
+  <div class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    myHQ — The Origin Story
+  </div>
+  <div class="nav-tag">Chapter 2 of 4 · Onboarding</div>
+  <div class="nav-pills">
+    <a class="nav-pill hub" href="index.html">← Course Hub</a>
+    <div class="nav-pill active" onclick="scrollTo('#s-timeline',this)">Timeline</div>
+    <div class="nav-pill" onclick="scrollTo('#s-team',this)">The Team</div>
+    <div class="nav-pill" onclick="scrollTo('#s-quiz',this)">Quiz</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-geo-1"></div>
+  <div class="hero-geo-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Chapter 2 · The Origin Story</div>
+    <div class="hero-h1">From a pub with<br><em>empty seats</em> to<br>India's largest workspace platform.</div>
+    <div class="hero-sub">Every great company starts with a stubborn question. Ours was: "Why can't professionals work anywhere, at the price of a coffee?" That question, asked in a Bengaluru traffic jam in 2015, became everything you see today.</div>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-n">50K+</div><div class="h-stat-l">Seats</div></div>
+      <div class="h-stat"><div class="h-stat-n">₹500Cr+</div><div class="h-stat-l">Annual GMV</div></div>
+      <div class="h-stat"><div class="h-stat-n">30</div><div class="h-stat-l">Cities</div></div>
+      <div class="h-stat"><div class="h-stat-n">10K+</div><div class="h-stat-l">B2B Clients</div></div>
+      <div class="h-stat"><div class="h-stat-n">4.5 ★</div><div class="h-stat-l">App Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout" id="s-timeline">
+
+  <!-- TIMELINE -->
+  <div class="timeline-pane">
+    <div class="section-label">
+      <div class="section-label-num">01</div>
+      <div class="section-label-text">The myHQ Timeline · Milestone by Milestone</div>
+      <div class="section-label-line"></div>
+    </div>
+    <p style="font-size:12px;color:var(--mid);margin-bottom:32px;line-height:1.6;">Click any milestone to unfold the story behind it.</p>
+
+    <div class="tl-track" id="track">
+      <div class="tl-spine-wrap"><div class="tl-spine-fill" id="spineFill"></div></div>
+
+      <div class="tl-item" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>2015 — The Spark</div>
+          <div class="tl-event">Two IIT Delhi batchmates reconnect in Bengaluru traffic.</div>
+          <div class="tl-detail">
+            Utkarsh Kawatra (Mathematics &amp; Computing, IIT Delhi) and Vinayak Agrawal (Electrical Engineering, IIT Delhi) had met years earlier. Life took them different directions — Utkarsh to Helion Ventures, Vinayak to Goldman Sachs. Then Bengaluru happened: long traffic jams, late-night dinners, and a shared frustration that kept surfacing. <strong>Why is it so hard to find a decent place to work that isn't your living room or a 3-year lease?</strong><br><br>That frustration was the seed of myHQ.
+            <div class="tl-photo-slot" id="photo-2015">
+              <input type="file" accept="image/*" style="display:none" id="file-2015" onchange="loadPhoto(this,'photo-2015','caption-2015')">
+              <div class="upload-overlay">
+                <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                <div class="upload-label">Add a team photo</div>
+                <div class="upload-hint">Early team — 2015</div>
+                <button class="upload-btn" onclick="event.stopPropagation();document.getElementById('file-2015').click()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Upload Photo</button>
+              </div>
+              <img id="img-2015" src="" alt="" style="display:none;width:100%;max-height:200px;object-fit:cover;border:1.5px solid var(--dark);">
+              <div class="photo-caption" id="caption-2015">Utkarsh &amp; Vinayak — Bengaluru, 2015</div>
+            </div>
+            <span class="tl-badge badge-coral">The Insight</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item milestone" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>April 2016 — Founded</div>
+          <div class="tl-event">A pub becomes a proof of concept. myHQ is born.</div>
+          <div class="tl-detail">
+            A friend offered Utkarsh and Vinayak a pub that sat empty during daytime hours. They turned it into a coworking space, charged professionals a day-pass rate, and watched it fill up. The experiment worked — and became the founding metaphor of myHQ: <strong>idle space is wasted potential</strong>.
+            <div class="tl-visual">
+              <div class="tl-visual-icon">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="14" width="24" height="28" rx="3" fill="#FFB848" stroke="#7a4d00" stroke-width="2"/>
+                  <path d="M32 20h6a3 3 0 0 1 0 6h-6" stroke="#7a4d00" stroke-width="2" fill="#FFD580"/>
+                  <rect x="12" y="14" width="5" height="6" rx="1" fill="rgba(255,255,255,0.4)"/>
+                </svg>
+              </div>
+              <div class="tl-visual-text"><strong>The Original HQ</strong><br>A Delhi pub, empty before noon — myHQ's first "coworking space." Workspace at the cost of a coffee.</div>
+            </div>
+            <div class="tl-photo-slot" id="photo-2016">
+              <input type="file" accept="image/*" style="display:none" id="file-2016" onchange="loadPhoto(this,'photo-2016','caption-2016')">
+              <div class="upload-overlay">
+                <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                <div class="upload-label">Add a founding photo</div>
+                <div class="upload-hint">Launch day or early office — 2016</div>
+                <button class="upload-btn" onclick="event.stopPropagation();document.getElementById('file-2016').click()">Upload Photo</button>
+              </div>
+              <img id="img-2016" src="" alt="" style="display:none;width:100%;max-height:200px;object-fit:cover;border:1.5px solid var(--dark);">
+              <div class="photo-caption" id="caption-2016">The founding moment — April 2016</div>
+            </div>
+            <span class="tl-badge badge-amber">Founded</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>2017–2018 — First Capital</div>
+          <div class="tl-event">Seed funding. Delhi, Mumbai, Bengaluru. The platform takes shape.</div>
+          <div class="tl-detail">
+            Early backing from angel investors and a seed round validated the model. myHQ expanded from Delhi to Mumbai and Bengaluru — India's three biggest professional markets. The platform moved from a simple listings site to a bookable marketplace: you could search, view, and pay for workspace in one flow.
+            <div class="tl-photo-slot" id="photo-2017">
+              <input type="file" accept="image/*" style="display:none" id="file-2017" onchange="loadPhoto(this,'photo-2017','caption-2017')">
+              <div class="upload-overlay">
+                <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                <div class="upload-label">Add a team photo</div>
+                <div class="upload-hint">Early team — 2017/18</div>
+                <button class="upload-btn" onclick="event.stopPropagation();document.getElementById('file-2017').click()">Upload Photo</button>
+              </div>
+              <img id="img-2017" src="" alt="" style="display:none;width:100%;max-height:200px;object-fit:cover;border:1.5px solid var(--dark);">
+              <div class="photo-caption" id="caption-2017">The early team — 2017</div>
+            </div>
+            <span class="tl-badge badge-blue">Seed Round</span>
+            <span class="tl-badge badge-coral">3 Cities</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item milestone" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>2019 — Pre-Series A</div>
+          <div class="tl-event">$1.5M. Enterprise products launch. 10+ cities.</div>
+          <div class="tl-detail">
+            India Quotient, RB Investments, and LetsVenture led a $1.5M Pre-Series A round. myHQ crossed 10 cities and launched dedicated desks and managed office products — moving meaningfully beyond individual day passes into enterprise territory. The B2B DNA was beginning to form.
+            <span class="tl-badge badge-amber">$1.5M raised</span>
+            <span class="tl-badge badge-blue">10+ cities</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item covid" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>2020–21 — The Test</div>
+          <div class="tl-event">COVID-19 hits. The world freezes. myHQ bends but doesn't break.</div>
+          <div class="tl-detail">
+            The pandemic was an existential test for every workspace company on the planet. Traditional office demand collapsed overnight. For myHQ, the inverse happened: the platform's model — <strong>no lock-ins, no deposits, fully flexible</strong> — was built for exactly this uncertainty. Companies rethinking their footprint needed myHQ more, not less.<br><br>This period also marked the team's deepest test of resolve. No playbook existed. The founders had to lead through fog.
+            <div class="tl-photo-slot" id="photo-covid">
+              <input type="file" accept="image/*" style="display:none" id="file-covid" onchange="loadPhoto(this,'photo-covid','caption-covid')">
+              <div class="upload-overlay">
+                <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                <div class="upload-label">Add a team photo</div>
+                <div class="upload-hint">During COVID — 2020/21</div>
+                <button class="upload-btn" onclick="event.stopPropagation();document.getElementById('file-covid').click()">Upload Photo</button>
+              </div>
+              <img id="img-covid" src="" alt="" style="display:none;width:100%;max-height:200px;object-fit:cover;border:1.5px solid var(--dark);">
+              <div class="photo-caption" id="caption-covid">The team — navigating the pandemic, 2020</div>
+            </div>
+            <span class="tl-badge badge-dark">Resilience</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item milestone" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>April 2022 — Acquired by ANAROCK</div>
+          <div class="tl-event">₹125 Cr. India's largest real estate advisory backs myHQ.</div>
+          <div class="tl-detail">
+            ANAROCK — India's largest real estate advisory — acquired a 75% stake in myHQ for ₹125 Cr (cash + stock). The founders stayed. The brand stayed. The mission stayed. What changed: access to 1,800+ real estate professionals, institutional developer relationships, and enterprise sales muscle at national scale.<br><br>myHQ became <strong>myHQ by ANAROCK</strong> — and the B2B chapter accelerated dramatically.
+            <div class="tl-photo-slot" id="photo-2022">
+              <input type="file" accept="image/*" style="display:none" id="file-2022" onchange="loadPhoto(this,'photo-2022','caption-2022')">
+              <div class="upload-overlay">
+                <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                <div class="upload-label">Add a photo</div>
+                <div class="upload-hint">ANAROCK deal &amp; team — 2022</div>
+                <button class="upload-btn" onclick="event.stopPropagation();document.getElementById('file-2022').click()">Upload Photo</button>
+              </div>
+              <img id="img-2022" src="" alt="" style="display:none;width:100%;max-height:200px;object-fit:cover;border:1.5px solid var(--dark);">
+              <div class="photo-caption" id="caption-2022">myHQ by ANAROCK — 2022</div>
+            </div>
+            <span class="tl-badge badge-green">₹125 Cr acquisition</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>2022–2024 — National Scale</div>
+          <div class="tl-event">30 cities. Assisted Marketplace launches. GCC demand surges.</div>
+          <div class="tl-detail">
+            National footprint solidified: 30+ cities, 5,000+ workspace partners, 50,000+ seats. The Assisted Marketplace launched as a dedicated high-touch advisory service for enterprise clients — shortlisting, negotiating, and closing long-term workspace deals end-to-end. Global Capability Centres became the primary growth engine. Corporate deal sizes began dwarfing individual memberships.
+            <span class="tl-badge badge-blue">National Scale</span>
+            <span class="tl-badge badge-green">GCC Boom</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item milestone active" onclick="toggle(this)">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-era"><div class="era-dot"></div>Today — 2026</div>
+          <div class="tl-event">India's largest end-to-end workspace discovery platform. And now, the world.</div>
+          <div class="tl-detail">
+            ₹500 Cr+ GMV. 10,000+ B2B clients. 30 cities. 4.5-star app. 500,000+ downloads. Corporate demand now accounts for nearly one-fifth of all commercial leasing in India. GCCs are projected to add 40,000 jobs and 120 new centres by 2026 — and myHQ sits at the centre of that wave.<br><br>
+            <strong>From a pub in Delhi to the pulse of India's flexible workspace revolution.</strong>
+            <div class="expansion-callout">
+              <div class="exp-icon"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+              <div>
+                <div class="exp-label">What's Next — International</div>
+                <div class="exp-text">
+                  myHQ is taking the model global through <a href="https://myhqspaces.com" target="_blank" rel="noopener">myhqspaces.com</a> — a dedicated international expansion initiative.
+                  <div class="exp-leads">
+                    <span class="exp-lead-chip">Judhajit Bal — PnL Growth</span>
+                    <span class="exp-lead-chip">Nitin Agarwal — PnL Virtual Office</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="tl-badge badge-green">Today</span>
+            <span class="tl-badge badge-blue">Going Global</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /tl-track -->
+
+    <div class="tl-stats">
+      <div class="stat-card"><div class="stat-num">50K+</div><div class="stat-lbl">Seats available</div></div>
+      <div class="stat-card"><div class="stat-num">₹500Cr+</div><div class="stat-lbl">Annual GMV</div></div>
+      <div class="stat-card"><div class="stat-num">30</div><div class="stat-lbl">Cities covered</div></div>
+      <div class="stat-card"><div class="stat-num">10K+</div><div class="stat-lbl">B2B clients</div></div>
+    </div>
+
+  </div><!-- /timeline-pane -->
+
+  <!-- TEAM PANE -->
+  <div class="founders-pane" id="s-team">
+    <div class="pane-head">
+      <div class="pane-eyebrow">The People</div>
+      <div class="pane-title">Meet the Team</div>
+      <div class="pane-sub">Click any card to read their full story</div>
+    </div>
+    <div class="team-section-label">Founders</div>
+    <div class="founder-card" onclick="openModal('utkarsh')">
+      <div class="founder-banner"><div class="founder-banner-bg"></div><div class="founder-banner-pattern"></div><div class="founder-pulse"><div class="pulse-dot"></div>Active</div><div class="founder-initials-block">UK</div><div class="founder-banner-role">Co-Founder &amp; CEO</div></div>
+      <div class="founder-body"><div class="founder-name">Utkarsh Kawatra</div><div class="founder-tagline">IIT Delhi → Helion Ventures → myHQ. Building India's most flexible workspace economy since a pub gave him the idea.</div><div class="founder-chips"><span class="chip">Strategy</span><span class="chip">Business Dev</span><span class="chip accent">BloodConnect NGO</span></div><div class="founder-cta">Read full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </div>
+    <div class="founder-card teal" onclick="openModal('vinayak')">
+      <div class="founder-banner"><div class="founder-banner-bg"></div><div class="founder-banner-pattern"></div><div class="founder-pulse"><div class="pulse-dot"></div>Active</div><div class="founder-initials-block">VA</div><div class="founder-banner-role">Co-Founder &amp; CTO</div></div>
+      <div class="founder-body"><div class="founder-name">Vinayak Agrawal</div><div class="founder-tagline">Goldman Sachs quant turned product builder. Holds 2 patents. Leads tech, product &amp; marketing at myHQ.</div><div class="founder-chips"><span class="chip">Product</span><span class="chip">Technology</span><span class="chip accent">2 Patents</span></div><div class="founder-cta">Read full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </div>
+    <div class="team-section-label">Leadership</div>
+    <div class="founder-card coral" onclick="openModal('manoj')">
+      <div class="founder-banner"><div class="founder-banner-bg"></div><div class="founder-banner-pattern"></div><div class="founder-pulse"><div class="pulse-dot"></div>Active</div><div class="founder-initials-block">MK</div><div class="founder-banner-role">PnL Head — Sales</div></div>
+      <div class="founder-body"><div class="founder-name">Manoj Kumar Yadav</div><div class="founder-tagline">IIT Delhi Mech '17. Ex-founder of SchoolLog. 7+ years in real estate. The one who closes the deal.</div><div class="founder-chips"><span class="chip">Sales</span><span class="chip">Real Estate</span><span class="chip accent">Ex-Founder</span></div><div class="founder-cta">Read full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </div>
+    <div class="founder-card mint" onclick="openModal('nitin')">
+      <div class="founder-banner"><div class="founder-banner-bg"></div><div class="founder-banner-pattern"></div><div class="founder-pulse"><div class="pulse-dot"></div>Active</div><div class="founder-initials-block">NA</div><div class="founder-banner-role">PnL Head — Virtual Office</div></div>
+      <div class="founder-body"><div class="founder-name">Nitin Agarwal</div><div class="founder-tagline">IIT Delhi Mech '16. Built Paavan and YoloBus before myHQ. Now leading Virtual Office and global expansion.</div><div class="founder-chips"><span class="chip">Virtual Office</span><span class="chip">Global Expansion</span><span class="chip accent">Ex-Founder</span></div><div class="founder-cta">Read full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </div>
+    <div class="founder-card growth" onclick="openModal('judhajit')">
+      <div class="founder-banner"><div class="founder-banner-bg"></div><div class="founder-banner-pattern"></div><div class="founder-pulse"><div class="pulse-dot"></div>Active</div><div class="founder-initials-block">JB</div><div class="founder-banner-role">PnL Head — Growth</div></div>
+      <div class="founder-body"><div class="founder-name">Judhajit Bal</div><div class="founder-tagline">AIT Pune + MDI Gurgaon. Ex-Coca-Cola. Co-founded Maidaan. Leads growth &amp; international expansion at myHQ.</div><div class="founder-chips"><span class="chip">Growth</span><span class="chip">International</span><span class="chip accent">Ex-Founder</span></div><div class="founder-cta">Read full story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </div>
+  </div><!-- /founders-pane -->
+</div><!-- /layout -->
+
+<!-- QUIZ SECTION -->
+<div style="background:#ECECF4; padding: 48px 48px 0;">
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+    <div style="font-size:11px;font-weight:900;color:var(--mid);letter-spacing:1px;">02</div>
+    <div id="s-quiz" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">Check Your Understanding</div>
+    <div style="flex:1;height:2px;background:var(--dark);opacity:0.12;"></div>
+  </div>
+</div>
+<div style="padding: 0 48px 0;">
+<div class="quiz-section">
+  <div class="quiz-header">
+    <div class="quiz-header-left">
+      <div class="qh-label">Chapter 2 Assessment</div>
+      <div class="qh-title">The myHQ Origin Story Quiz</div>
+    </div>
+    <div class="qh-score" id="qh-score">0 / 8</div>
+  </div>
+
+  <!-- Questions -->
+  <div id="quiz-container">
+    <div class="quiz-body" id="q-panel-1">
+      <div class="q-progress">
+        <div class="q-dot active" id="dot-1"></div>
+        <div class="q-dot" id="dot-2"></div>
+        <div class="q-dot" id="dot-3"></div>
+        <div class="q-dot" id="dot-4"></div>
+        <div class="q-dot" id="dot-5"></div>
+        <div class="q-dot" id="dot-6"></div>
+        <div class="q-dot" id="dot-7"></div>
+        <div class="q-dot" id="dot-8"></div>
+        <div class="q-progress-label">Question 1 of 8</div>
+      </div>
+      <div class="q-number">Question 01</div>
+      <div class="q-type-tag">Multiple Choice</div>
+      <div class="q-text">myHQ was founded after the co-founders noticed a problem while working in Bengaluru. What was the original proof of concept that validated the myHQ model?</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(1,'A','B')"><span class="opt-letter">A</span><span class="opt-text">Building a custom software platform for coworking space operators to manage bookings</span></button>
+        <button class="q-option" onclick="answer(1,'B','B')"><span class="opt-letter">B</span><span class="opt-text">Turning a pub that sat empty during daytime hours into a day-pass coworking space</span></button>
+        <button class="q-option" onclick="answer(1,'C','B')"><span class="opt-letter">C</span><span class="opt-text">Partnering with WeWork India to offer discounted memberships to freelancers</span></button>
+        <button class="q-option" onclick="answer(1,'D','B')"><span class="opt-letter">D</span><span class="opt-text">Launching a mobile app that aggregated coworking prices across Delhi and Mumbai</span></button>
+      </div>
+      <div class="q-explanation" id="exp-1">
+        <div class="exp-label">Why this matters</div>
+        The pub story is the founding metaphor of myHQ: idle space is wasted potential. It was also the insight that flex workspace doesn't require purpose-built offices — it requires smart aggregation and technology. WeWork, by contrast, builds and operates its own spaces. myHQ aggregates and connects.
+      </div>
+      <button class="q-next-btn" id="next-1" onclick="showQuestion(2)">Next Question →</button>
+    </div>
+
+    <div class="quiz-body" id="q-panel-2" style="display:none;">
+      <div class="q-progress">
+        <div class="q-dot correct" id="dot-1b"></div>
+        <div class="q-dot active" id="dot-2b"></div>
+        <div class="q-dot" id="dot-3b"></div>
+        <div class="q-dot" id="dot-4b"></div>
+        <div class="q-dot" id="dot-5b"></div>
+        <div class="q-dot" id="dot-6b"></div>
+        <div class="q-dot" id="dot-7b"></div>
+        <div class="q-dot" id="dot-8b"></div>
+        <div class="q-progress-label">Question 2 of 8</div>
+      </div>
+      <div class="q-number">Question 02</div>
+      <div class="q-type-tag">Multiple Choice</div>
+      <div class="q-text">In April 2022, ANAROCK acquired a 75% stake in myHQ for ₹125 Cr. What was the most significant strategic benefit this brought to myHQ — beyond the capital?</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(2,'A','A')"><span class="opt-letter">A</span><span class="opt-text">Access to ANAROCK's 1,800+ real estate professionals, developer relationships, and enterprise sales reach at national scale</span></button>
+        <button class="q-option" onclick="answer(2,'B','A')"><span class="opt-letter">B</span><span class="opt-text">The ability to rebrand myHQ entirely under the ANAROCK umbrella and drop the myHQ name</span></button>
+        <button class="q-option" onclick="answer(2,'C','A')"><span class="opt-letter">C</span><span class="opt-text">Capital to build myHQ's own managed office spaces in Bengaluru and Hyderabad</span></button>
+        <button class="q-option" onclick="answer(2,'D','A')"><span class="opt-letter">D</span><span class="opt-text">A guaranteed pipeline of residential real estate clients from ANAROCK's existing business</span></button>
+      </div>
+      <div class="q-explanation" id="exp-2">
+        <div class="exp-label">Why this matters</div>
+        The ANAROCK deal was about institutional distribution — not capital alone. myHQ kept its brand, founders, and mission intact. What changed was access to enterprise-grade real estate relationships that would have taken years to build independently. Option B is wrong because the brand was explicitly preserved. Options C and D misread the strategic logic of the deal entirely.
+      </div>
+      <button class="q-next-btn" id="next-2" onclick="showQuestion(3)">Next Question →</button>
+    </div>
+
+    <div class="quiz-body" id="q-panel-3" style="display:none;">
+      <div class="q-progress">
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot active" id="dot-3"></div>
+        <div class="q-dot" id="dot-4c"></div>
+        <div class="q-dot" id="dot-5c"></div>
+        <div class="q-dot" id="dot-6c"></div>
+        <div class="q-dot" id="dot-7c"></div>
+        <div class="q-dot" id="dot-8c"></div>
+        <div class="q-progress-label">Question 3 of 8 — Scenario</div>
+      </div>
+      <div class="q-number">Question 03</div>
+      <div class="q-type-tag scenario">Scenario</div>
+      <div class="q-text">What should Arjun do?</div>
+      <div class="q-setup">Arjun is on his first client call — a 25-seat requirement from a Series B startup. The client asks: "How is myHQ different from just going directly to a coworking operator like Awfis or WeWork?" Arjun has read the origin story and knows the platform well. He has 30 seconds to answer.</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(3,'A','C')"><span class="opt-letter">A</span><span class="opt-text">Tell them that myHQ is cheaper than going directly to operators because they negotiate bulk discounts</span></button>
+        <button class="q-option" onclick="answer(3,'B','C')"><span class="opt-letter">B</span><span class="opt-text">Explain that myHQ is backed by ANAROCK, which means they're part of India's largest real estate company</span></button>
+        <button class="q-option" onclick="answer(3,'C','C')"><span class="opt-letter">C</span><span class="opt-text">Explain that myHQ gives them access to 50,000+ seats across 30 cities — all on one agreement, one invoice, one point of contact — so they're not locked into a single operator's locations or pricing</span></button>
+        <button class="q-option" onclick="answer(3,'D','C')"><span class="opt-letter">D</span><span class="opt-text">Ask the client which operators they've already spoken to, and offer to beat their best quote</span></button>
+      </div>
+      <div class="q-explanation" id="exp-3">
+        <div class="exp-label">Why this matters</div>
+        The correct answer positions myHQ's core value proposition: aggregation, flexibility, and simplicity. One agreement, one invoice, 50,000+ seats — that's a fundamentally different offer from any single operator. Option A (price alone) is a race to the bottom. Option B (ANAROCK backing) is a credibility point, not a product differentiator. Option D turns an advisory conversation into a price war — the opposite of consultative selling.
+      </div>
+      <button class="q-next-btn" id="next-3" onclick="showQuestion(4)">Next Question →</button>
+    </div>
+    <!-- Q4: Situational -->
+    <div class="quiz-body" id="q-panel-4" style="display:none;">
+      <div class="q-progress">
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot active" id="dot-4"></div>
+        <div class="q-dot" id="dot-5d"></div>
+        <div class="q-dot" id="dot-6d"></div>
+        <div class="q-dot" id="dot-7d"></div>
+        <div class="q-dot" id="dot-8d"></div>
+        <div class="q-progress-label">Question 4 of 8 — Scenario</div>
+      </div>
+      <div class="q-number">Question 04</div>
+      <div class="q-type-tag scenario">Scenario</div>
+      <div class="q-text">What should Priya say?</div>
+      <div class="q-setup">Priya is pitching a 15-seat requirement to an operations manager at a mid-sized consulting firm. The client says: "We already have a registered office address. Why would we need myHQ's Virtual Office product?" Priya knows the product and its use cases well.</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(4,'A','C')"><span class="opt-letter">A</span><span class="opt-text">Tell them the Virtual Office product is mainly for startups that need a prestigious address for their first GST registration</span></button>
+        <button class="q-option" onclick="answer(4,'B','C')"><span class="opt-letter">B</span><span class="opt-text">Offer a discount on Virtual Office and bundle it with the coworking seats to sweeten the deal</span></button>
+        <button class="q-option" onclick="answer(4,'C','C')"><span class="opt-letter">C</span><span class="opt-text">Explain that Virtual Office adds a professional business address in a different city — so teams expanding to Mumbai, Bengaluru, or Delhi can get a local presence without leasing physical space, enabling GST registration, client-facing addresses, and mail handling at a fraction of the cost</span></button>
+        <button class="q-option" onclick="answer(4,'D','C')"><span class="opt-letter">D</span><span class="opt-text">Acknowledge that Virtual Office may not be relevant for them and focus entirely on the coworking seats</span></button>
+      </div>
+      <div class="q-explanation" id="exp-4">
+        <div class="exp-label">Why this matters</div>
+        Virtual Office isn't a replacement for a registered office — it's an expansion tool. The key pitch is city-level presence without a lease: a professional address, GST registration, and mail handling in a new market. This is especially powerful for consulting firms expanding their geographic footprint. Option A undersells the product. Option B skips the value conversation entirely. Option D gives up too early.
+      </div>
+      <button class="q-next-btn" id="next-4" onclick="showQuestion(5)">Next Question →</button>
+    </div>
+
+    <!-- Q5: Situational -->
+    <div class="quiz-body" id="q-panel-5" style="display:none;">
+      <div class="q-progress">
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot active" id="dot-5"></div>
+        <div class="q-dot" id="dot-6e"></div>
+        <div class="q-dot" id="dot-7e"></div>
+        <div class="q-dot" id="dot-8e"></div>
+        <div class="q-progress-label">Question 5 of 8 — Scenario</div>
+      </div>
+      <div class="q-number">Question 05</div>
+      <div class="q-type-tag scenario">Scenario</div>
+      <div class="q-text">How should Rohan respond?</div>
+      <div class="q-setup">Rohan is on a follow-up call with a 40-person tech company. The HR lead says: "We love the idea, but our CFO is pushing back — he thinks we should just sign a 3-year lease because it'll be cheaper in the long run." Rohan has one shot to reframe the conversation before they go cold.</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(5,'A','B')"><span class="opt-letter">A</span><span class="opt-text">Agree with the CFO's logic and offer a longer-term myHQ contract at a reduced monthly rate to match lease economics</span></button>
+        <button class="q-option" onclick="answer(5,'B','B')"><span class="opt-letter">B</span><span class="opt-text">Reframe the comparison: a 3-year lease locks in headcount, location, and capex. myHQ scales up or down as their team grows, with zero fit-out cost, zero deposit, and the ability to add seats across any of 30 cities — so the real question isn't cost per seat, it's cost of inflexibility</span></button>
+        <button class="q-option" onclick="answer(5,'C','B')"><span class="opt-letter">C</span><span class="opt-text">Send a detailed cost comparison spreadsheet to the CFO directly and let the numbers speak for themselves</span></button>
+        <button class="q-option" onclick="answer(5,'D','B')"><span class="opt-letter">D</span><span class="opt-text">Escalate to a senior manager at myHQ and ask them to join the next call to handle the CFO objection</span></button>
+      </div>
+      <div class="q-explanation" id="exp-5">
+        <div class="exp-label">Why this matters</div>
+        The CFO's objection is about cost per seat — but that's the wrong frame. The right frame is flexibility: what happens when you hire 10 more people, open a Pune office, or hit a down round? A lease punishes all three scenarios. myHQ doesn't. Option A concedes the wrong point. Option C is passive — the conversation will die in an inbox. Option D signals that Rohan isn't equipped to handle the objection, which kills trust.
+      </div>
+      <button class="q-next-btn" id="next-5" onclick="showQuestion(6)">Next Question →</button>
+    </div>
+
+    <!-- Q6: Normal (Multiple Choice) -->
+    <div class="quiz-body" id="q-panel-6" style="display:none;">
+      <div class="q-progress">
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot active" id="dot-6"></div>
+        <div class="q-dot" id="dot-7f"></div>
+        <div class="q-dot" id="dot-8f"></div>
+        <div class="q-progress-label">Question 6 of 8</div>
+      </div>
+      <div class="q-number">Question 06</div>
+      <div class="q-type-tag">Multiple Choice</div>
+      <div class="q-text">Which of the following best describes the founding insight behind myHQ's business model?</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(6,'A','D')"><span class="opt-letter">A</span><span class="opt-text">India lacks enough coworking operators, so myHQ would build and operate its own premium spaces in metro cities</span></button>
+        <button class="q-option" onclick="answer(6,'B','D')"><span class="opt-letter">B</span><span class="opt-text">Remote workers needed a social network to find teammates and collaborate on projects across cities</span></button>
+        <button class="q-option" onclick="answer(6,'C','D')"><span class="opt-letter">C</span><span class="opt-text">Corporate real estate was underpriced and myHQ could profit by leasing large floors and subletting them flexibly</span></button>
+        <button class="q-option" onclick="answer(6,'D','D')"><span class="opt-letter">D</span><span class="opt-text">Workspace already exists everywhere — in hotels, cafés, pubs, and offices — and was going to waste; myHQ could aggregate and monetise that idle capacity through technology</span></button>
+      </div>
+      <div class="q-explanation" id="exp-6">
+        <div class="exp-label">Why this matters</div>
+        myHQ is an asset-light aggregator — it doesn't own the spaces it sells. The founding insight, proven by the Delhi pub story, is that idle capacity exists all around us. Technology can surface it, package it, and make it bookable. This is what separates myHQ from operators like Awfis or WeWork, who build and own their own spaces. Understanding this distinction is essential for every client conversation.
+      </div>
+      <button class="q-next-btn" id="next-6" onclick="showQuestion(7)">Next Question →</button>
+    </div>
+
+    <!-- Q7: Situational -->
+    <div class="quiz-body" id="q-panel-7" style="display:none;">
+      <div class="q-progress">
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot active" id="dot-7"></div>
+        <div class="q-dot" id="dot-8g"></div>
+        <div class="q-progress-label">Question 7 of 8 — Scenario</div>
+      </div>
+      <div class="q-number">Question 07</div>
+      <div class="q-type-tag scenario">Scenario</div>
+      <div class="q-text">What is the best response Neha can give?</div>
+      <div class="q-setup">Neha is on an intro call with the CEO of a 60-person D2C brand. The CEO asks: "We've heard of myHQ — aren't you just the Indian WeWork?" Neha has 20 seconds to correct the misconception without being dismissive.</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(7,'A','B')"><span class="opt-letter">A</span><span class="opt-text">Say "Not exactly — we're actually much more affordable than WeWork" and move on quickly to the pitch</span></button>
+        <button class="q-option" onclick="answer(7,'B','B')"><span class="opt-letter">B</span><span class="opt-text">Clarify that WeWork builds and operates its own spaces, while myHQ is a marketplace — they work with 500+ space partners across 30 cities, so clients get choice, flexibility, and one single agreement instead of being tied to one operator's locations</span></button>
+        <button class="q-option" onclick="answer(7,'C','B')"><span class="opt-letter">C</span><span class="opt-text">Agree that the comparison is fair and explain how myHQ benchmarks its pricing against WeWork to stay competitive</span></button>
+        <button class="q-option" onclick="answer(7,'D','B')"><span class="opt-letter">D</span><span class="opt-text">Pivot immediately to asking about their workspace needs without addressing the WeWork comparison</span></button>
+      </div>
+      <div class="q-explanation" id="exp-7">
+        <div class="exp-label">Why this matters</div>
+        The WeWork comparison is one of the most common misconceptions in the market. Getting it wrong costs credibility. The correct reframe is model-level: WeWork is an operator (it builds, leases, and runs spaces). myHQ is a marketplace (it aggregates, connects, and manages). This distinction matters to enterprise clients because it means no lock-in, more options, and a single point of contact across an entire city network. Option A is superficial. Option C confirms a false premise. Option D dodges the question and loses trust.
+      </div>
+      <button class="q-next-btn" id="next-7" onclick="showQuestion(8)">Next Question →</button>
+    </div>
+
+    <!-- Q8: Situational -->
+    <div class="quiz-body" id="q-panel-8" style="display:none;">
+      <div class="q-progress">
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot correct"></div>
+        <div class="q-dot active" id="dot-8"></div>
+        <div class="q-progress-label">Question 8 of 8 — Scenario</div>
+      </div>
+      <div class="q-number">Question 08</div>
+      <div class="q-type-tag scenario">Scenario</div>
+      <div class="q-text">What should Karan do next?</div>
+      <div class="q-setup">Karan has just closed a 20-seat deal with a fintech client in Mumbai. In the post-deal call, the client mentions: "By the way, we're also looking at setting up a small team in Hyderabad — maybe 5 people — but we don't want another vendor relationship to manage." Karan recognises an immediate cross-sell opportunity.</div>
+      <div class="q-options">
+        <button class="q-option" onclick="answer(8,'A','B')"><span class="opt-letter">A</span><span class="opt-text">Thank them for the information and pass the Hyderabad requirement to a regional colleague to handle separately</span></button>
+        <button class="q-option" onclick="answer(8,'B','B')"><span class="opt-letter">B</span><span class="opt-text">Explain that the Hyderabad seats can be added to the same agreement they already have — same invoice, same point of contact, zero additional vendor onboarding — and offer to send options within 24 hours</span></button>
+        <button class="q-option" onclick="answer(8,'C','B')"><span class="opt-letter">C</span><span class="opt-text">Suggest they consider a Virtual Office in Hyderabad first before committing to physical seats, and schedule a separate product demo</span></button>
+        <button class="q-option" onclick="answer(8,'D','B')"><span class="opt-letter">D</span><span class="opt-text">Tell them myHQ has great Hyderabad partners and ask them to fill out a fresh requirements form on the website</span></button>
+      </div>
+      <div class="q-explanation" id="exp-8">
+        <div class="exp-label">Why this matters</div>
+        The client has already told Karan exactly what they value: no new vendor relationships. myHQ's single-agreement, multi-city model is the perfect answer — and it's the core differentiator that makes expansion frictionless. The correct move is to close the loop immediately: same deal, same invoice, options in 24 hours. Option A loses the deal to a competitor. Option C adds unnecessary friction. Option D sends a warm client back to a cold form — a classic relationship mistake.
+      </div>
+      <button class="q-next-btn" id="next-8" onclick="showQuizResult()">See Your Result →</button>
+    </div>
+  </div>
+
+  <!-- Quiz Result -->
+  <div class="quiz-result" id="quiz-result">
+    <div class="qr-icon" id="qr-icon">🏆</div>
+    <div class="qr-title" id="qr-title">—</div>
+    <div class="qr-sub" id="qr-sub">—</div>
+    <div class="qr-score-row">
+      <div class="qrs"><div class="qrs-n" id="qr-correct">0</div><div class="qrs-l">Correct</div></div>
+      <div class="qrs"><div class="qrs-n" id="qr-wrong">0</div><div class="qrs-l">Incorrect</div></div>
+      <div class="qrs"><div class="qrs-n" id="qr-pct">0%</div><div class="qrs-l">Score</div></div>
+    </div>
+    <button class="q-next-btn visible" onclick="revealCompletionGate()" id="complete-btn">View Chapter Complete Screen →</button>
+  </div>
+</div>
+</div>
+
+<!-- COMPLETION GATE -->
+<div style="background:#ECECF4;padding:32px 0 0;">
+<div class="completion-gate" id="completion-gate">
+  <div class="cg-header">
+    <div class="cg-header-icon">🎉</div>
+    <div>
+      <div class="cg-header-text">Chapter 2 Complete</div>
+      <div class="cg-header-sub">myHQ — The Origin Story · You've earned your Chapter 3 unlock code.</div>
+    </div>
+  </div>
+  <div class="cg-body">
+    <div class="cg-cell">
+      <div class="cg-cell-label">Your Score</div>
+      <div class="cg-score-num" id="cg-score-num">—</div>
+      <div class="cg-score-label" id="cg-score-label">out of 8 questions</div>
+    </div>
+    <div class="cg-cell">
+      <div class="cg-cell-label">Key Takeaways</div>
+      <ul class="cg-takeaways">
+        <li class="cg-takeaway">myHQ started with idle pub space — the insight that workspace exists everywhere. The platform unlocks it.</li>
+        <li class="cg-takeaway">The ANAROCK acquisition wasn't an exit — it was an accelerant. Founders stayed. Mission stayed. Distribution scaled.</li>
+        <li class="cg-takeaway">One agreement, one invoice, 50,000+ seats across 30 cities. That's the pitch — know it cold.</li>
+      </ul>
+    </div>
+    <div class="cg-code-cell">
+      <div class="cg-code-label">Chapter 3 Unlock Code</div>
+      <div class="cg-code-box" onclick="copyCode(this)">ORIGIN</div>
+      <div class="cg-code-hint">Copy this code. Use it to unlock Chapter 3 — How myHQ Works — on the Course Hub.<br>Click the code to copy.</div>
+    </div>
+  </div>
+  <div class="cg-actions">
+    <div class="cg-action-text">Chapters 3 &amp; 4 are coming soon. <strong>Return to the hub to track your progress.</strong></div>
+    <a id="cg-return-btn" href="index.html" class="cg-btn">← Return to Course Hub</a>
+  </div>
+</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header" id="modalHeader">
+      <div class="modal-header-bg" id="modalHeaderBg"></div>
+      <div class="modal-header-pattern"></div>
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+      <div class="modal-avatar" id="modalAvatar"></div>
+      <div class="modal-header-text">
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-role-tag" id="modalRole"></div>
+      </div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">myHQ — The Origin Story</div>
+  <div class="footer-note">Chapter 2 of 4 · Starter Kit · Onboarding</div>
+  <div class="footer-module">myHQ L&D Program · 2026</div>
+</div>
+
+<script>
+/* ── SCROLL NAV ── */
+function scrollTo(id, el) {
+  const t = document.querySelector(id);
+  if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  document.querySelectorAll('.nav-pill').forEach(p=>p.classList.remove('active'));
+  if(el) el.classList.add('active');
+}
+
+/* ── TIMELINE ── */
+function toggle(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+  updateSpine();
+}
+function updateSpine() {
+  const track = document.getElementById('track');
+  const active = document.querySelector('.tl-item.active');
+  const fill = document.getElementById('spineFill');
+  if (!active) { fill.style.height = '0%'; return; }
+  const trackTop = track.getBoundingClientRect().top;
+  const itemTop = active.getBoundingClientRect().top;
+  const pct = ((itemTop - trackTop + 14) / track.offsetHeight) * 100;
+  fill.style.height = Math.min(pct + 3, 100) + '%';
+}
+updateSpine();
+window.addEventListener('resize', updateSpine);
+
+/* ── PHOTO UPLOAD ── */
+function loadPhoto(input, slotId, captionId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const slot = document.getElementById(slotId);
+    const img = slot.querySelector('img');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    slot.querySelector('.upload-overlay').style.display = 'none';
+    slot.style.borderStyle = 'solid';
+    slot.style.borderColor = 'var(--dark)';
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ── GOOGLE SHEETS INTEGRATION ── */
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbymEPPPIHoXCJG_tMYPa742kXgsHEBnRLEoDFeRgv8WI2KO5nd6Pn7RJ2jRf_b9_fuJWg/exec';
+
+async function postScoreToSheets(score) {
+  const email = localStorage.getItem('myhq_email') || sessionStorage.getItem('myhq_email') || '';
+  const name = localStorage.getItem('myhq_name') || sessionStorage.getItem('myhq_name') || '';
+  if (!email) return;
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'update_score',
+        email: email,
+        name: name,
+        chapter: 'ch2',
+        score: score
+      })
+    });
+  } catch(e) {
+    console.warn('myHQ Tracker: score post failed', e);
+  }
+}
+
+/* ── QUIZ ENGINE ── */
+let quizScore = 0;
+let wrongCount = 0;
+
+function answer(qNum, chosen, correct) {
+  const options = document.querySelectorAll(`#q-panel-${qNum} .q-option`);
+  options.forEach(opt => { opt.classList.add('disabled'); opt.style.pointerEvents = 'none'; });
+  const isCorrect = chosen === correct;
+  const letters = ['A','B','C','D'];
+  options.forEach((opt, i) => {
+    if (letters[i] === correct) opt.classList.add('correct-ans');
+    if (letters[i] === chosen && !isCorrect) opt.classList.add('wrong-ans');
+  });
+  if (isCorrect) {
+    quizScore++;
+  } else {
+    wrongCount++;
+  }
+  document.getElementById('qh-score').textContent = quizScore + ' / 8';
+  const exp = document.getElementById(`exp-${qNum}`);
+  exp.classList.add('visible');
+  if (!isCorrect) exp.classList.add('wrong-exp');
+  document.getElementById(`next-${qNum}`).classList.add('visible');
+  // Update dot on current panel
+  const dot = document.getElementById(`dot-${qNum}`);
+  if (dot) dot.className = isCorrect ? 'q-dot correct' : 'q-dot wrong';
+}
+
+function showQuestion(num) {
+  document.querySelectorAll('[id^="q-panel-"]').forEach(p => p.style.display = 'none');
+  document.getElementById(`q-panel-${num}`).style.display = 'block';
+}
+
+function showQuizResult() {
+  document.querySelectorAll('[id^="q-panel-"]').forEach(p => p.style.display = 'none');
+  const result = document.getElementById('quiz-result');
+  result.classList.add('visible');
+  const pct = Math.round((quizScore / 8) * 100);
+  document.getElementById('qr-correct').textContent = quizScore;
+  document.getElementById('qr-wrong').textContent = wrongCount;
+  document.getElementById('qr-pct').textContent = pct + '%';
+  let icon, title, sub;
+  if (pct === 100) { icon='🏆'; title='Perfect.'; sub='You know the story cold. Every answer — the founding metaphor, the ANAROCK deal, the product differences, the objection handling. You\'re ready for any client conversation.'; }
+  else if (pct >= 75) { icon='📈'; title='Solid.'; sub='Strong foundation. Review the questions you missed — especially the objection-handling scenarios. Those come up on calls constantly and the right answer needs to be instinctive.'; }
+  else if (pct >= 50) { icon='📖'; title='Getting there.'; sub='You have the basics, but some of the nuances aren\'t locked in yet. Go back through the timeline and the product positioning sections, then retry. The origin story is one of your most powerful sales tools — worth knowing completely.'; }
+  else { icon='🔁'; title='Review needed.'; sub='Head back through the timeline and key milestones before retrying. The scenarios especially require you to know the product model and differentiation well — that knowledge comes directly from the origin story.'; }
+  document.getElementById('qr-icon').textContent = icon;
+  document.getElementById('qr-title').textContent = title;
+  document.getElementById('qr-sub').textContent = sub;
+}
+
+function revealCompletionGate() {
+  const gate = document.getElementById('completion-gate');
+  gate.classList.add('visible');
+  gate.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.getElementById('cg-score-num').textContent = quizScore + '/8';
+  document.getElementById('cg-score-label').textContent = Math.round((quizScore/8)*100) + '% accuracy';
+  // Wire return button to pass completion state back to index
+  document.getElementById('cg-return-btn').href = 'index.html?ch2=done&score=' + quizScore;
+  // Post score to Google Sheets
+  postScoreToSheets(quizScore);
+  // ── Persist completion to localStorage for progress widget ──
+  if (window.myhqProgress) {
+    window.myhqProgress.markComplete(2, quizScore + '/8');
+  } else {
+    localStorage.setItem('myhq_ch2_complete', 'true');
+    localStorage.setItem('myhq_ch2_score', quizScore + '/8');
+  }
+}
+
+function copyCode(el) {
+  const code = el.textContent.trim();
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = el.textContent;
+    el.textContent = '✓ COPIED';
+    setTimeout(() => { el.textContent = orig; }, 1500);
+  }).catch(() => {
+    el.style.outline = '3px solid var(--amber)';
+    setTimeout(() => { el.style.outline = ''; }, 1500);
+  });
+}
+
+/* ── TEAM MODALS ── */
+const team = {
+  utkarsh: {
+    initials:'UK', name:'Utkarsh Kawatra', role:'Co-Founder & CEO',
+    gradient:'linear-gradient(135deg, #1E22AA 0%, #676BE4 100%)',
+    bio:'Utkarsh co-founded myHQ in 2016 with a single, stubborn belief: professionals deserve the freedom to work from anywhere — at the cost of a coffee. His journey started at IIT Delhi (Integrated M.Tech, Mathematics & Computing, 2008–2013), and then took him to Helion Ventures as an Investment Analyst. In 2010, while still in college, he co-founded BloodConnect, an NGO that now operates across 10+ cities with a 300+ person volunteer team.',
+    anecdote:{text:'The first myHQ "office" was a pub in Delhi that sat empty before noon. Utkarsh and Vinayak turned it into a coworking space — and charged professionals a day-pass. The pub became proof of concept.',img:'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=120&h=80&fit=crop&q=80'},
+    quote:'"We started with a pub that had empty seats during the day. That was our first office. Everything came from that insight."',
+    facts:[{label:'Education',value:'IIT Delhi — M.Tech Mathematics & Computing'},{label:'Before myHQ',value:'Helion Ventures, Opera Solutions, Ernst & Young'},{label:'Founded',value:'myHQ (2016) + BloodConnect NGO (2010)'},{label:'NGO Impact',value:'BloodConnect — 300+ team, 10+ cities'}],
+    tags:['Entrepreneurship','Business Strategy','Leadership','Analytics','Angel Investor'],
+    linkedin:'https://www.linkedin.com/in/utkarshkawatra/'
+  },
+  vinayak: {
+    initials:'VA', name:'Vinayak Agrawal', role:'Co-Founder & CTO',
+    gradient:'linear-gradient(135deg, #1E22AA 0%, #96E6DC 100%)',
+    bio:'Vinayak leads product, technology, and marketing at myHQ. An Electrical Engineering graduate from IIT Delhi — where he won Best Undergraduate Thesis and holds two patents in Machine Learning and Computer Vision — he went on to Goldman Sachs as a Quant & Algorithmic Trading Strategist before co-founding myHQ.',
+    anecdote:{text:'Vinayak and Utkarsh bonded over long Bengaluru commutes and dinner outings in 2015 — before either of them had quit their jobs. By the time they launched myHQ, they\'d stress-tested every version of the idea across a dozen restaurants.',img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=120&h=80&fit=crop&q=80'},
+    quote:'"The bond between us grew during long Bangalore traffic jams and dinner outings in 2015. That\'s where myHQ was really born."',
+    facts:[{label:'Education',value:'IIT Delhi — B.Tech Electrical Engineering'},{label:'Before myHQ',value:'Goldman Sachs (Quant Trading), Adobe (Research)'},{label:'Academic Award',value:'Best Undergraduate Thesis, IIT Delhi'},{label:'Inventions',value:'2 Patents — ML & Computer Vision'}],
+    tags:['Product','Technology','Marketing','Machine Learning','Algorithms'],
+    linkedin:'https://www.linkedin.com/in/vinayak-agrawal-b2003958/'
+  },
+  manoj: {
+    initials:'MK', name:'Manoj Kumar Yadav', role:'PnL Head — Sales',
+    gradient:'linear-gradient(135deg, #FF7351 0%, #FFB848 100%)',
+    bio:'Manoj leads Sales at myHQ with 7+ years of deep experience in real estate. A Mechanical Engineering graduate from IIT Delhi (batch of 2017), he started his entrepreneurial journey by co-founding SchoolLog before pivoting into commercial real estate. At myHQ, Manoj leads the end-to-end sales function — the engine that converts workspace requirements into signed deals.',
+    anecdote:{text:'Manoj went from building a school management product (SchoolLog) to selling flexible workspaces at national scale. Two completely different worlds — connected by the same instinct: find a problem, then solve it relentlessly.',img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=120&h=80&fit=crop&q=80'},
+    quote:'"Real estate moves on relationships and trust. That hasn\'t changed. What\'s changed is the product — and ours is the best."',
+    facts:[{label:'Education',value:'IIT Delhi — Mechanical Engineering, 2017'},{label:'Before myHQ',value:'Co-founder, SchoolLog'},{label:'Experience',value:'7+ years in Real Estate'},{label:'At myHQ',value:'PnL Head — Sales'}],
+    tags:['Sales','Real Estate','Enterprise','Entrepreneurship','Deal Structuring'],
+    linkedin:'#'
+  },
+  nitin: {
+    initials:'NA', name:'Nitin Agarwal', role:'PnL Head — Virtual Office',
+    gradient:'linear-gradient(135deg, #1a6b23 0%, #ADDFB3 100%)',
+    bio:'Nitin leads Virtual Office at myHQ — one of the platform\'s fastest-growing product lines — and is a key driver of myHQ\'s international expansion through myhqspaces.com. A Mechanical Engineering graduate from IIT Delhi (batch of 2016), Nitin is a serial builder: before myHQ he co-founded Paavan (a spiritual wellness app) and YoloBus (intercity bus ticketing).',
+    anecdote:{text:'Nitin built Paavan — a Sanskrit-themed wellness app — and YoloBus — a bus ticketing platform — before landing at myHQ. From spiritual journeys to intercity travel to flexible workspaces: a founder who genuinely doesn\'t fear the pivot.',img:'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=120&h=80&fit=crop&q=80'},
+    quote:'"Every company I built before myHQ taught me something different. Here, I get to use all of it."',
+    facts:[{label:'Education',value:'IIT Delhi — Mechanical Engineering, 2016'},{label:'Past Ventures',value:'Paavan (wellness app), YoloBus (bus ticketing)'},{label:'At myHQ',value:'PnL Head — Virtual Office'},{label:'Also Leading',value:'International Expansion — myhqspaces.com'}],
+    tags:['Virtual Office','International Expansion','Product','Startups','Growth'],
+    linkedin:'#'
+  },
+  judhajit: {
+    initials:'JB', name:'Judhajit Bal', role:'PnL Head — Growth',
+    gradient:'linear-gradient(135deg, #1E22AA 0%, #96E6DC 100%)',
+    bio:'Judhajit heads Growth at myHQ and is leading the charge on international expansion through myhqspaces.com. He brings the rare combination of blue-chip corporate experience and founder-level hustle: he worked at Coca-Cola before co-founding Maidaan, a sports-tech venture. He holds a BE from AIT Pune and an MBA from MDI Gurgaon.',
+    anecdote:{text:'Judhajit went from marketing Coca-Cola (a category where everything is about volume and brand) to building Maidaan, a sports-tech startup, before taking Growth at myHQ. Few leaders have navigated such different arenas with the same confidence.',img:'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=120&h=80&fit=crop&q=80'},
+    quote:'"Growth isn\'t a department — it\'s a mindset. Every team at myHQ owns a piece of it."',
+    facts:[{label:'Education',value:'AIT Pune (BE) + MDI Gurgaon (MBA)'},{label:'Past Ventures',value:'Maidaan (sports-tech startup)'},{label:'Corporate',value:'Coca-Cola India'},{label:'Also Leading',value:'International Expansion — myhqspaces.com'}],
+    tags:['Growth','International Expansion','Brand','Strategy','Sports Tech'],
+    linkedin:'#'
+  }
+};
+
+function openModal(key) {
+  const f = team[key];
+  document.getElementById('modalHeaderBg').style.background = f.gradient;
+  document.getElementById('modalAvatar').textContent = f.initials;
+  document.getElementById('modalName').textContent = f.name;
+  document.getElementById('modalRole').textContent = f.role;
+  const factsHTML = f.facts.map(fc=>`<div class="fact-item"><div class="fact-label">${fc.label}</div><div class="fact-value">${fc.value}</div></div>`).join('');
+  const tagsHTML = f.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('');
+  const anecHTML = f.anecdote?`<div class="modal-section-title">Behind the Scenes</div><div class="modal-anecdote"><img class="anecdote-img" src="${f.anecdote.img}" alt=""><div class="anecdote-text">${f.anecdote.text}</div></div>`:'';
+  const liHTML = f.linkedin&&f.linkedin!=='#'?`<a class="modal-linkedin" href="${f.linkedin}" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>View LinkedIn</a>`:'';
+  document.getElementById('modalBody').innerHTML=`<div class="modal-section-title">About</div><div class="modal-bio">${f.bio}</div>${anecHTML}<div class="modal-section-title">Background</div><div class="modal-facts">${factsHTML}</div><div class="modal-section-title">Skills & Expertise</div><div class="modal-tags">${tagsHTML}</div><div class="modal-section-title">In Their Own Words</div><div class="modal-quote">${f.quote}</div><div class="modal-section-title">Fun Fact</div><div class="modal-fun-fact"><div class="modal-fun-fact-label">Coming Soon</div><div class="modal-placeholder-fact">A fun fact about ${f.name.split(' ')[0]} will be added here shortly.</div></div>${liHTML}`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+function closeModalOnBg(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+</script>
+<!-- Progress Widget — cross-page report card -->
+<script src="progress.js"></script>
+</body>
+</html>
