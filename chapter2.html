@@ -483,6 +483,7 @@ body {
   border: 2px solid var(--mid);
   background: var(--white);
   transition: var(--transition);
+  cursor: pointer;
 }
 .q-dot.active { border-color: var(--coral); background: var(--coral); }
 .q-dot.correct { border-color: var(--mint); background: var(--mint); border-color: var(--dark); }
@@ -1037,14 +1038,14 @@ body {
   <div id="quiz-container">
     <div class="quiz-body" id="q-panel-1">
       <div class="q-progress">
-        <div class="q-dot active" id="dot-1"></div>
-        <div class="q-dot" id="dot-2"></div>
-        <div class="q-dot" id="dot-3"></div>
-        <div class="q-dot" id="dot-4"></div>
-        <div class="q-dot" id="dot-5"></div>
-        <div class="q-dot" id="dot-6"></div>
-        <div class="q-dot" id="dot-7"></div>
-        <div class="q-dot" id="dot-8"></div>
+        <div class="q-dot active" id="dot-1" onclick="goToQuestion(1)"></div>
+<div class="q-dot" id="dot-2" onclick="goToQuestion(2)"></div>
+<div class="q-dot" id="dot-3" onclick="goToQuestion(3)"></div>
+<div class="q-dot" id="dot-4" onclick="goToQuestion(4)"></div>
+<div class="q-dot" id="dot-5" onclick="goToQuestion(5)"></div>
+<div class="q-dot" id="dot-6" onclick="goToQuestion(6)"></div>
+<div class="q-dot" id="dot-7" onclick="goToQuestion(7)"></div>
+<div class="q-dot" id="dot-8" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 1 of 8</div>
       </div>
       <div class="q-number">Question 01</div>
@@ -1065,14 +1066,14 @@ body {
 
     <div class="quiz-body" id="q-panel-2" style="display:none;">
       <div class="q-progress">
-        <div class="q-dot correct" id="dot-1b"></div>
-        <div class="q-dot active" id="dot-2b"></div>
-        <div class="q-dot" id="dot-3b"></div>
-        <div class="q-dot" id="dot-4b"></div>
-        <div class="q-dot" id="dot-5b"></div>
-        <div class="q-dot" id="dot-6b"></div>
-        <div class="q-dot" id="dot-7b"></div>
-        <div class="q-dot" id="dot-8b"></div>
+     <div class="q-dot correct" id="dot-1b" onclick="goToQuestion(1)"></div>
+<div class="q-dot active" id="dot-2b" onclick="goToQuestion(2)"></div>
+<div class="q-dot" id="dot-3b" onclick="goToQuestion(3)"></div>
+<div class="q-dot" id="dot-4b" onclick="goToQuestion(4)"></div>
+<div class="q-dot" id="dot-5b" onclick="goToQuestion(5)"></div>
+<div class="q-dot" id="dot-6b" onclick="goToQuestion(6)"></div>
+<div class="q-dot" id="dot-7b" onclick="goToQuestion(7)"></div>
+<div class="q-dot" id="dot-8b" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 2 of 8</div>
       </div>
       <div class="q-number">Question 02</div>
@@ -1093,14 +1094,14 @@ body {
 
     <div class="quiz-body" id="q-panel-3" style="display:none;">
       <div class="q-progress">
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot active" id="dot-3"></div>
-        <div class="q-dot" id="dot-4c"></div>
-        <div class="q-dot" id="dot-5c"></div>
-        <div class="q-dot" id="dot-6c"></div>
-        <div class="q-dot" id="dot-7c"></div>
-        <div class="q-dot" id="dot-8c"></div>
+        <div class="q-dot correct" onclick="goToQuestion(1)"></div>
+<div class="q-dot correct" onclick="goToQuestion(2)"></div>
+<div class="q-dot active" id="dot-3" onclick="goToQuestion(3)"></div>
+<div class="q-dot" id="dot-4c" onclick="goToQuestion(4)"></div>
+<div class="q-dot" id="dot-5c" onclick="goToQuestion(5)"></div>
+<div class="q-dot" id="dot-6c" onclick="goToQuestion(6)"></div>
+<div class="q-dot" id="dot-7c" onclick="goToQuestion(7)"></div>
+<div class="q-dot" id="dot-8c" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 3 of 8 — Scenario</div>
       </div>
       <div class="q-number">Question 03</div>
@@ -1122,14 +1123,14 @@ body {
     <!-- Q4: Situational -->
     <div class="quiz-body" id="q-panel-4" style="display:none;">
       <div class="q-progress">
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot active" id="dot-4"></div>
-        <div class="q-dot" id="dot-5d"></div>
-        <div class="q-dot" id="dot-6d"></div>
-        <div class="q-dot" id="dot-7d"></div>
-        <div class="q-dot" id="dot-8d"></div>
+        <div class="q-dot correct" onclick="goToQuestion(1)"></div>
+<div class="q-dot correct" onclick="goToQuestion(2)"></div>
+<div class="q-dot correct" onclick="goToQuestion(3)"></div>
+<div class="q-dot active" id="dot-4" onclick="goToQuestion(4)"></div>
+<div class="q-dot" id="dot-5d" onclick="goToQuestion(5)"></div>
+<div class="q-dot" id="dot-6d" onclick="goToQuestion(6)"></div>
+<div class="q-dot" id="dot-7d" onclick="goToQuestion(7)"></div>
+<div class="q-dot" id="dot-8d" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 4 of 8 — Scenario</div>
       </div>
       <div class="q-number">Question 04</div>
@@ -1152,14 +1153,14 @@ body {
     <!-- Q5: Situational -->
     <div class="quiz-body" id="q-panel-5" style="display:none;">
       <div class="q-progress">
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot active" id="dot-5"></div>
-        <div class="q-dot" id="dot-6e"></div>
-        <div class="q-dot" id="dot-7e"></div>
-        <div class="q-dot" id="dot-8e"></div>
+       <div class="q-dot correct" onclick="goToQuestion(1)"></div>
+<div class="q-dot correct" onclick="goToQuestion(2)"></div>
+<div class="q-dot correct" onclick="goToQuestion(3)"></div>
+<div class="q-dot correct" onclick="goToQuestion(4)"></div>
+<div class="q-dot active" id="dot-5" onclick="goToQuestion(5)"></div>
+<div class="q-dot" id="dot-6e" onclick="goToQuestion(6)"></div>
+<div class="q-dot" id="dot-7e" onclick="goToQuestion(7)"></div>
+<div class="q-dot" id="dot-8e" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 5 of 8 — Scenario</div>
       </div>
       <div class="q-number">Question 05</div>
@@ -1182,14 +1183,14 @@ body {
     <!-- Q6: Normal (Multiple Choice) -->
     <div class="quiz-body" id="q-panel-6" style="display:none;">
       <div class="q-progress">
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot active" id="dot-6"></div>
-        <div class="q-dot" id="dot-7f"></div>
-        <div class="q-dot" id="dot-8f"></div>
+        <div class="q-dot correct" onclick="goToQuestion(1)"></div>
+<div class="q-dot correct" onclick="goToQuestion(2)"></div>
+<div class="q-dot correct" onclick="goToQuestion(3)"></div>
+<div class="q-dot correct" onclick="goToQuestion(4)"></div>
+<div class="q-dot correct" onclick="goToQuestion(5)"></div>
+<div class="q-dot active" id="dot-6" onclick="goToQuestion(6)"></div>
+<div class="q-dot" id="dot-7f" onclick="goToQuestion(7)"></div>
+<div class="q-dot" id="dot-8f" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 6 of 8</div>
       </div>
       <div class="q-number">Question 06</div>
@@ -1211,14 +1212,14 @@ body {
     <!-- Q7: Situational -->
     <div class="quiz-body" id="q-panel-7" style="display:none;">
       <div class="q-progress">
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot active" id="dot-7"></div>
-        <div class="q-dot" id="dot-8g"></div>
+        <div class="q-dot correct" onclick="goToQuestion(1)"></div>
+<div class="q-dot correct" onclick="goToQuestion(2)"></div>
+<div class="q-dot correct" onclick="goToQuestion(3)"></div>
+<div class="q-dot correct" onclick="goToQuestion(4)"></div>
+<div class="q-dot correct" onclick="goToQuestion(5)"></div>
+<div class="q-dot correct" onclick="goToQuestion(6)"></div>
+<div class="q-dot active" id="dot-7" onclick="goToQuestion(7)"></div>
+<div class="q-dot" id="dot-8g" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 7 of 8 — Scenario</div>
       </div>
       <div class="q-number">Question 07</div>
@@ -1241,14 +1242,14 @@ body {
     <!-- Q8: Situational -->
     <div class="quiz-body" id="q-panel-8" style="display:none;">
       <div class="q-progress">
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot correct"></div>
-        <div class="q-dot active" id="dot-8"></div>
+       <div class="q-dot correct" onclick="goToQuestion(1)"></div>
+<div class="q-dot correct" onclick="goToQuestion(2)"></div>
+<div class="q-dot correct" onclick="goToQuestion(3)"></div>
+<div class="q-dot correct" onclick="goToQuestion(4)"></div>
+<div class="q-dot correct" onclick="goToQuestion(5)"></div>
+<div class="q-dot correct" onclick="goToQuestion(6)"></div>
+<div class="q-dot correct" onclick="goToQuestion(7)"></div>
+<div class="q-dot active" id="dot-8" onclick="goToQuestion(8)"></div>
         <div class="q-progress-label">Question 8 of 8 — Scenario</div>
       </div>
       <div class="q-number">Question 08</div>
@@ -1446,6 +1447,15 @@ function answer(qNum, chosen, correct) {
 function showQuestion(num) {
   document.querySelectorAll('[id^="q-panel-"]').forEach(p => p.style.display = 'none');
   document.getElementById(`q-panel-${num}`).style.display = 'block';
+  const current = parseInt(sessionStorage.getItem('myhq_ch2_furthest') || '1');
+  if (num > current) sessionStorage.setItem('myhq_ch2_furthest', num);
+}
+
+function goToQuestion(num) {
+  const furthest = parseInt(sessionStorage.getItem('myhq_ch2_furthest') || '1');
+  if (num > furthest) return;
+  document.querySelectorAll('[id^="q-panel-"]').forEach(p => p.style.display = 'none');
+  document.getElementById(`q-panel-${num}`).style.display = 'block';
 }
 
 function showQuizResult() {
@@ -1568,9 +1578,12 @@ function openModal(key) {
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 function closeModalOnBg(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+// Initialize session tracking
+sessionStorage.setItem('myhq_ch2_furthest', '1');
 </script>
 <!-- Progress Widget — cross-page report card -->
 <script src="progress.js"></script>
 </body>
 </html>
+
 
