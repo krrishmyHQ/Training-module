@@ -755,9 +755,9 @@ body {
   <div class="nav-tag">Chapter 2 of 4 · Onboarding</div>
   <div class="nav-pills">
     <a class="nav-pill hub" href="index.html">← Course Hub</a>
-    <div class="nav-pill active" onclick="scrollTo('#s-timeline',this)">Timeline</div>
-    <div class="nav-pill" onclick="scrollTo('#s-team',this)">The Team</div>
-    <div class="nav-pill" onclick="scrollTo('#s-quiz',this)">Quiz</div>
+    <div class="nav-pill active" onclick="scrollToSection('#s-timeline',this)">Timeline</div>
+    <div class="nav-pill" onclick="scrollToSection('#s-team',this)">The Team</div>
+    <div class="nav-pill" onclick="scrollToSection('#s-quiz',this)">Quiz</div>
   </div>
 </div>
 
@@ -914,9 +914,9 @@ body {
         <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
         <div class="tl-card">
           <div class="tl-era"><div class="era-dot"></div>April 2022 — Acquired by ANAROCK</div>
-          <div class="tl-event">₹125 Cr. India's largest real estate advisory backs myHQ.</div>
+          <div class="tl-event"> India's largest real estate advisory backs myHQ.</div>
           <div class="tl-detail">
-            ANAROCK — India's largest real estate advisory — acquired a 75% stake in myHQ for ₹125 Cr (cash + stock). The founders stayed. The brand stayed. The mission stayed. What changed: access to 1,800+ real estate professionals, institutional developer relationships, and enterprise sales muscle at national scale.<br><br>myHQ became <strong>myHQ by ANAROCK</strong> — and the B2B chapter accelerated dramatically.
+            ANAROCK — India's largest real estate advisory — acquired a majority stake in myHQ. The founders stayed. The brand stayed. The mission stayed. What changed: access to 1,800+ real estate professionals, institutional developer relationships, and enterprise sales muscle at national scale.<br><br>myHQ became <strong>myHQ by ANAROCK</strong> — and the B2B chapter accelerated dramatically.
             <div class="tl-photo-slot" id="photo-2022">
               <input type="file" accept="image/*" style="display:none" id="file-2022" onchange="loadPhoto(this,'photo-2022','caption-2022')">
               <div class="upload-overlay">
@@ -928,7 +928,7 @@ body {
               <img id="img-2022" src="" alt="" style="display:none;width:100%;max-height:200px;object-fit:cover;border:1.5px solid var(--dark);">
               <div class="photo-caption" id="caption-2022">myHQ by ANAROCK — 2022</div>
             </div>
-            <span class="tl-badge badge-green">₹125 Cr acquisition</span>
+            <span class="tl-badge badge-green">₹Majority acquisition</span>
           </div>
         </div>
       </div>
@@ -1077,7 +1077,7 @@ body {
       </div>
       <div class="q-number">Question 02</div>
       <div class="q-type-tag">Multiple Choice</div>
-      <div class="q-text">In April 2022, ANAROCK acquired a 75% stake in myHQ for ₹125 Cr. What was the most significant strategic benefit this brought to myHQ — beyond the capital?</div>
+      <div class="q-text">In April 2022, ANAROCK acquired a majority stake in myHQ. What was the most significant strategic benefit this brought to myHQ — beyond the capital?</div>
       <div class="q-options">
         <button class="q-option" onclick="answer(2,'A','A')"><span class="opt-letter">A</span><span class="opt-text">Access to ANAROCK's 1,800+ real estate professionals, developer relationships, and enterprise sales reach at national scale</span></button>
         <button class="q-option" onclick="answer(2,'B','A')"><span class="opt-letter">B</span><span class="opt-text">The ability to rebrand myHQ entirely under the ANAROCK umbrella and drop the myHQ name</span></button>
@@ -1346,7 +1346,7 @@ body {
 
 <script>
 /* ── SCROLL NAV ── */
-function scrollTo(id, el) {
+function scrollToSection(id, el) {
   const t = document.querySelector(id);
   if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
   document.querySelectorAll('.nav-pill').forEach(p=>p.classList.remove('active'));
@@ -1573,3 +1573,4 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); }
 <script src="progress.js"></script>
 </body>
 </html>
+
